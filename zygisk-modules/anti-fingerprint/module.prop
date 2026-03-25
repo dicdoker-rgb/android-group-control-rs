@@ -1,0 +1,6 @@
+id=anti_fingerprint
+name=Anti-Fingerprint (Canvas Poison + IO Redirect)
+version=v1.0
+versionCode=1
+author=groupcontrol
+description=Canvas/WebGL fingerprint poisoning + /proc file redirect to defeat flipped SDK detection

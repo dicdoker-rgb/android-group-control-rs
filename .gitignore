@@ -1,0 +1,7 @@
+target/
+node_modules/
+.playwright-cli/
+.runtime/
+frontend/dist/
+*.log
+.DS_Store

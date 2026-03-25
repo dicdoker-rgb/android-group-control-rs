@@ -1,0 +1,24 @@
+[
+  {
+    "id": "recording-1773764590786",
+    "name": "功能自检-录制",
+    "steps": [
+      {
+        "action": "keyevent",
+        "params": {
+          "key": "HOME"
+        },
+        "delay_ms": 0
+      },
+      {
+        "action": "launch",
+        "params": {
+          "activity": ".Settings",
+          "package": "com.android.settings"
+        },
+        "delay_ms": 350
+      }
+    ],
+    "created_at": "1773764590786"
+  }
+]

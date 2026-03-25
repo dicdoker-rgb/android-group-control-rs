@@ -1,0 +1,11 @@
+[
+  {
+    "id": "task-1773763109500",
+    "name": "回桌面模板",
+    "action": "keyevent",
+    "params": {
+      "key": "HOME"
+    },
+    "created_at": "1773763109500"
+  }
+]

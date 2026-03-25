@@ -1,0 +1,113 @@
+/* ===== Bottom Action Bar ===== */
+
+.action-bar {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 90;
+  animation: action-bar-slide-up 0.25s ease-out;
+}
+
+@keyframes action-bar-slide-up {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.action-bar-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  border-radius: 16px;
+  background: rgba(26, 26, 46, 0.75);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+}
+
+.action-bar-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(99, 102, 241, 0.25);
+  color: #a5b4fc;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.action-bar-buttons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.action-bar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+  box-shadow: none;
+}
+
+.action-bar-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  transform: none;
+}
+
+.action-bar-clear {
+  color: rgba(248, 113, 113, 0.9);
+}
+
+.action-bar-clear:hover {
+  background: rgba(248, 113, 113, 0.15);
+  color: #fca5a5;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 767px) {
+  .action-bar {
+    bottom: 64px;
+    left: 8px;
+    right: 8px;
+    transform: none;
+  }
+
+  @keyframes action-bar-slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .action-bar-inner {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}

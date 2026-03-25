@@ -1,0 +1,196 @@
+/* ===== Tasks Page ===== */
+
+/* --- Task Cards --- */
+
+.task-draft-card,
+.task-template-card,
+.task-run-card {
+  padding: 12px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid var(--stroke);
+}
+
+.task-draft-card strong,
+.task-draft-card span,
+.task-template-card strong,
+.task-template-card span,
+.task-run-card strong,
+.task-run-card span {
+  display: block;
+}
+
+.task-draft-card span,
+.task-template-card span,
+.task-run-card span,
+.task-run-card p {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.task-template-card {
+  display: grid;
+  gap: 12px;
+}
+
+.task-template-list,
+.task-run-list {
+  display: grid;
+  gap: 10px;
+}
+
+.task-template-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.task-run-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+/* --- Recording --- */
+
+.recording-draft {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(242, 246, 252, 0.98), rgba(255, 255, 255, 0.98));
+  border: 1px solid var(--stroke);
+}
+
+.recording-draft.recording {
+  background: linear-gradient(180deg, rgba(234, 243, 255, 0.98), rgba(255, 255, 255, 0.98));
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+.recording-draft strong,
+.recording-draft span,
+.recording-step-copy strong,
+.recording-step-copy span {
+  display: block;
+}
+
+.recording-draft span,
+.recording-step-copy span {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.recording-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.recording-actions.wide button {
+  min-height: 48px;
+}
+
+.recording-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(246, 249, 253, 0.98));
+}
+
+/* --- Recording Steps --- */
+
+.recording-step-list {
+  display: grid;
+  gap: 10px;
+}
+
+.recording-step-card {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid var(--stroke);
+}
+
+.recording-step-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 0.86rem;
+}
+
+.recording-step-side {
+  display: grid;
+  justify-items: end;
+  gap: 8px;
+}
+
+.recording-step-actions {
+  display: grid;
+  gap: 6px;
+}
+
+.recording-step-editor {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(28, 45, 77, 0.12);
+}
+
+.recording-step-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.recording-step-grid.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.recording-step-grid.four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.recording-step-field {
+  display: grid;
+  gap: 6px;
+}
+
+.recording-step-field.compact {
+  max-width: 140px;
+}
+
+.recording-step-field span {
+  color: var(--muted-soft);
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+
+.recording-step-field input {
+  padding: 0.68rem 0.82rem;
+  border-radius: 14px;
+}
+
+.recording-step-field textarea {
+  padding: 0.72rem 0.82rem;
+  border-radius: 14px;
+  min-height: 92px;
+}
+
+.recording-step-card em {
+  font-style: normal;
+  color: var(--muted-soft);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}

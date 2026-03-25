@@ -1,0 +1,32 @@
+/* ===== Design Tokens ===== */
+
+:root {
+  --bg: #f0f0f0;
+  --bg-top: #f5f5f7;
+  --panel: rgba(255, 255, 255, 0.96);
+  --panel-strong: #ffffff;
+  --stroke: rgba(0, 0, 0, 0.09);
+  --stroke-strong: rgba(0, 0, 0, 0.14);
+  --ink: #1d1d1f;
+  --muted: #86868b;
+  --muted-soft: #a1a1a6;
+  --accent: #0071e3;
+  --accent-2: #0058b0;
+  --accent-soft: rgba(0, 113, 227, 0.08);
+  --ok: #248a3d;
+  --ok-soft: rgba(36, 138, 61, 0.1);
+  --warn: #d15d36;
+  --warn-soft: rgba(209, 93, 54, 0.1);
+  --shadow-xl: 0 8px 30px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.06);
+
+  --sidebar-width: 60px;
+  --sidebar-bg: #2c2c2e;
+  --sidebar-hover: rgba(255, 255, 255, 0.1);
+  --sidebar-active: rgba(0, 113, 227, 0.22);
+  --sidebar-text: rgba(255, 255, 255, 0.5);
+  --sidebar-text-active: #ffffff;
+  --header-height: 44px;
+  --titlebar-inset: 28px;
+}

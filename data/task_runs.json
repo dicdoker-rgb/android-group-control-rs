@@ -1,0 +1,1647 @@
+[
+  {
+    "id": "run-1774182131365",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1774182131365",
+    "device_count": 39,
+    "success_count": 39,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5552",
+      "192.168.31.9:5553",
+      "192.168.31.9:5554",
+      "192.168.31.9:5555",
+      "192.168.31.9:5556",
+      "192.168.31.9:5561",
+      "192.168.31.9:5562",
+      "192.168.31.9:5563",
+      "192.168.31.9:5564",
+      "192.168.31.9:5565",
+      "192.168.31.9:5566",
+      "192.168.31.9:5567",
+      "192.168.31.9:5568",
+      "192.168.31.9:5569",
+      "192.168.31.9:5570",
+      "192.168.31.9:5571",
+      "192.168.31.9:5572",
+      "192.168.31.9:5573",
+      "192.168.31.9:5574",
+      "192.168.31.9:5575",
+      "1ca3a42d",
+      "2069492e",
+      "20a6850e",
+      "21853937",
+      "21a81c0d",
+      "21d44c21",
+      "39dfcae0",
+      "3e8eca4e",
+      "4916c2c0",
+      "98b900d",
+      "9f5bac73",
+      "be6a14",
+      "ce4ec497",
+      "da5dc499",
+      "dac9c460",
+      "e13dc4ca",
+      "e60cc56",
+      "f0416a99",
+      "f4fc6dd"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774182036014",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1774182036014",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "21a81c0d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774176912507",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1774176912507",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5555"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774176908500",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1774176908500",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5555"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774163986325",
+    "name": "text",
+    "action": "text",
+    "created_at": "1774163986325",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5555"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774163949723",
+    "name": "launch",
+    "action": "launch",
+    "created_at": "1774163949723",
+    "device_count": 20,
+    "success_count": 20,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5552",
+      "192.168.31.9:5553",
+      "192.168.31.9:5554",
+      "192.168.31.9:5555",
+      "192.168.31.9:5556",
+      "192.168.31.9:5561",
+      "192.168.31.9:5562",
+      "192.168.31.9:5563",
+      "192.168.31.9:5564",
+      "192.168.31.9:5565",
+      "192.168.31.9:5566",
+      "192.168.31.9:5567",
+      "192.168.31.9:5568",
+      "192.168.31.9:5569",
+      "192.168.31.9:5570",
+      "192.168.31.9:5571",
+      "192.168.31.9:5572",
+      "192.168.31.9:5573",
+      "192.168.31.9:5574",
+      "192.168.31.9:5575"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774163947221",
+    "name": "keyevent",
+    "action": "keyevent",
+    "created_at": "1774163947221",
+    "device_count": 20,
+    "success_count": 20,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5552",
+      "192.168.31.9:5553",
+      "192.168.31.9:5554",
+      "192.168.31.9:5555",
+      "192.168.31.9:5556",
+      "192.168.31.9:5561",
+      "192.168.31.9:5562",
+      "192.168.31.9:5563",
+      "192.168.31.9:5564",
+      "192.168.31.9:5565",
+      "192.168.31.9:5566",
+      "192.168.31.9:5567",
+      "192.168.31.9:5568",
+      "192.168.31.9:5569",
+      "192.168.31.9:5570",
+      "192.168.31.9:5571",
+      "192.168.31.9:5572",
+      "192.168.31.9:5573",
+      "192.168.31.9:5574",
+      "192.168.31.9:5575"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774163946723",
+    "name": "swipe",
+    "action": "swipe",
+    "created_at": "1774163946723",
+    "device_count": 20,
+    "success_count": 20,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5552",
+      "192.168.31.9:5553",
+      "192.168.31.9:5554",
+      "192.168.31.9:5555",
+      "192.168.31.9:5556",
+      "192.168.31.9:5561",
+      "192.168.31.9:5562",
+      "192.168.31.9:5563",
+      "192.168.31.9:5564",
+      "192.168.31.9:5565",
+      "192.168.31.9:5566",
+      "192.168.31.9:5567",
+      "192.168.31.9:5568",
+      "192.168.31.9:5569",
+      "192.168.31.9:5570",
+      "192.168.31.9:5571",
+      "192.168.31.9:5572",
+      "192.168.31.9:5573",
+      "192.168.31.9:5574",
+      "192.168.31.9:5575"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774163946129",
+    "name": "tap",
+    "action": "tap",
+    "created_at": "1774163946129",
+    "device_count": 20,
+    "success_count": 20,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5552",
+      "192.168.31.9:5553",
+      "192.168.31.9:5554",
+      "192.168.31.9:5555",
+      "192.168.31.9:5556",
+      "192.168.31.9:5561",
+      "192.168.31.9:5562",
+      "192.168.31.9:5563",
+      "192.168.31.9:5564",
+      "192.168.31.9:5565",
+      "192.168.31.9:5566",
+      "192.168.31.9:5567",
+      "192.168.31.9:5568",
+      "192.168.31.9:5569",
+      "192.168.31.9:5570",
+      "192.168.31.9:5571",
+      "192.168.31.9:5572",
+      "192.168.31.9:5573",
+      "192.168.31.9:5574",
+      "192.168.31.9:5575"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774162937371",
+    "name": "launch",
+    "action": "launch",
+    "created_at": "1774162937371",
+    "device_count": 20,
+    "success_count": 0,
+    "failure_count": 20,
+    "serials": [
+      "192.168.31.9:5552",
+      "192.168.31.9:5553",
+      "192.168.31.9:5554",
+      "192.168.31.9:5555",
+      "192.168.31.9:5556",
+      "192.168.31.9:5561",
+      "192.168.31.9:5562",
+      "192.168.31.9:5563",
+      "192.168.31.9:5564",
+      "192.168.31.9:5565",
+      "192.168.31.9:5566",
+      "192.168.31.9:5567",
+      "192.168.31.9:5568",
+      "192.168.31.9:5569",
+      "192.168.31.9:5570",
+      "192.168.31.9:5571",
+      "192.168.31.9:5572",
+      "192.168.31.9:5573",
+      "192.168.31.9:5574",
+      "192.168.31.9:5575"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774162934797",
+    "name": "keyevent",
+    "action": "keyevent",
+    "created_at": "1774162934797",
+    "device_count": 20,
+    "success_count": 20,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5552",
+      "192.168.31.9:5553",
+      "192.168.31.9:5554",
+      "192.168.31.9:5555",
+      "192.168.31.9:5556",
+      "192.168.31.9:5561",
+      "192.168.31.9:5562",
+      "192.168.31.9:5563",
+      "192.168.31.9:5564",
+      "192.168.31.9:5565",
+      "192.168.31.9:5566",
+      "192.168.31.9:5567",
+      "192.168.31.9:5568",
+      "192.168.31.9:5569",
+      "192.168.31.9:5570",
+      "192.168.31.9:5571",
+      "192.168.31.9:5572",
+      "192.168.31.9:5573",
+      "192.168.31.9:5574",
+      "192.168.31.9:5575"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774162934240",
+    "name": "swipe",
+    "action": "swipe",
+    "created_at": "1774162934240",
+    "device_count": 20,
+    "success_count": 20,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5552",
+      "192.168.31.9:5553",
+      "192.168.31.9:5554",
+      "192.168.31.9:5555",
+      "192.168.31.9:5556",
+      "192.168.31.9:5561",
+      "192.168.31.9:5562",
+      "192.168.31.9:5563",
+      "192.168.31.9:5564",
+      "192.168.31.9:5565",
+      "192.168.31.9:5566",
+      "192.168.31.9:5567",
+      "192.168.31.9:5568",
+      "192.168.31.9:5569",
+      "192.168.31.9:5570",
+      "192.168.31.9:5571",
+      "192.168.31.9:5572",
+      "192.168.31.9:5573",
+      "192.168.31.9:5574",
+      "192.168.31.9:5575"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774162932208",
+    "name": "tap",
+    "action": "tap",
+    "created_at": "1774162932208",
+    "device_count": 20,
+    "success_count": 20,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5552",
+      "192.168.31.9:5553",
+      "192.168.31.9:5554",
+      "192.168.31.9:5555",
+      "192.168.31.9:5556",
+      "192.168.31.9:5561",
+      "192.168.31.9:5562",
+      "192.168.31.9:5563",
+      "192.168.31.9:5564",
+      "192.168.31.9:5565",
+      "192.168.31.9:5566",
+      "192.168.31.9:5567",
+      "192.168.31.9:5568",
+      "192.168.31.9:5569",
+      "192.168.31.9:5570",
+      "192.168.31.9:5571",
+      "192.168.31.9:5572",
+      "192.168.31.9:5573",
+      "192.168.31.9:5574",
+      "192.168.31.9:5575"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774162699111",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1774162699111",
+    "device_count": 18,
+    "success_count": 18,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5552",
+      "192.168.31.9:5553",
+      "192.168.31.9:5554",
+      "192.168.31.9:5555",
+      "192.168.31.9:5556",
+      "192.168.31.9:5561",
+      "192.168.31.9:5562",
+      "192.168.31.9:5563",
+      "192.168.31.9:5564",
+      "192.168.31.9:5565",
+      "192.168.31.9:5566",
+      "192.168.31.9:5569",
+      "192.168.31.9:5570",
+      "192.168.31.9:5571",
+      "192.168.31.9:5572",
+      "192.168.31.9:5573",
+      "192.168.31.9:5574",
+      "192.168.31.9:5575"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774103226558",
+    "name": "keyevent",
+    "action": "keyevent",
+    "created_at": "1774103226558",
+    "device_count": 6,
+    "success_count": 5,
+    "failure_count": 1,
+    "serials": [
+      "192.168.31.9:5552",
+      "192.168.31.9:5553",
+      "192.168.31.9:5554",
+      "192.168.31.9:5555",
+      "192.168.31.9:5556",
+      "192.168.31.9:5557"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774103226430",
+    "name": "keyevent",
+    "action": "keyevent",
+    "created_at": "1774103226430",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5552"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774103226312",
+    "name": "keyevent",
+    "action": "keyevent",
+    "created_at": "1774103226312",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5552"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774103226192",
+    "name": "keyevent",
+    "action": "keyevent",
+    "created_at": "1774103226192",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5552"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774103226074",
+    "name": "keyevent",
+    "action": "keyevent",
+    "created_at": "1774103226074",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5552"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774103225959",
+    "name": "keyevent",
+    "action": "keyevent",
+    "created_at": "1774103225959",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5552"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774102864204",
+    "name": "keyevent",
+    "action": "keyevent",
+    "created_at": "1774102864204",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5552"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774098100806",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1774098100806",
+    "device_count": 6,
+    "success_count": 6,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5553",
+      "192.168.31.9:5554",
+      "192.168.31.9:5555",
+      "192.168.31.9:5556",
+      "192.168.31.9:5552",
+      "192.168.31.9:5570"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774098080172",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1774098080172",
+    "device_count": 5,
+    "success_count": 5,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5553",
+      "192.168.31.9:5554",
+      "192.168.31.9:5555",
+      "192.168.31.9:5556",
+      "192.168.31.9:5552"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774097328316",
+    "name": "批量截图",
+    "action": "screenshot",
+    "created_at": "1774097328316",
+    "device_count": 6,
+    "success_count": 6,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5553",
+      "192.168.31.9:5554",
+      "192.168.31.9:5555",
+      "192.168.31.9:5556",
+      "192.168.31.9:5570",
+      "192.168.31.9:5552"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774096548708",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1774096548708",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5555"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774096547132",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1774096547132",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5555"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774095732826",
+    "name": "批量投屏",
+    "action": "mirror",
+    "created_at": "1774095732826",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5555"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774091053119",
+    "name": "批量投屏",
+    "action": "mirror",
+    "created_at": "1774091053119",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5555"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774090789512",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1774090789512",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5570"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774090725737",
+    "name": "warmup home",
+    "action": "keyevent",
+    "created_at": "1774090725737",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5570"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774090519761",
+    "name": "swipe",
+    "action": "swipe",
+    "created_at": "1774090519761",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5570"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774090517429",
+    "name": "gesture_path",
+    "action": "gesture_path",
+    "created_at": "1774090517429",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5570"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774090496591",
+    "name": "gesture path smoke",
+    "action": "gesture_path",
+    "created_at": "1774090496591",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5570"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774090496307",
+    "name": "swipe smoke",
+    "action": "swipe",
+    "created_at": "1774090496307",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5570"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774090452439",
+    "name": "gesture path smoke",
+    "action": "gesture_path",
+    "created_at": "1774090452439",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5570"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774089770017",
+    "name": "批量投屏",
+    "action": "mirror",
+    "created_at": "1774089770017",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5570"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774089152542",
+    "name": "批量投屏",
+    "action": "mirror",
+    "created_at": "1774089152542",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5570"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774084888166",
+    "name": "批量投屏",
+    "action": "mirror",
+    "created_at": "1774084888166",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5570"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774084643416",
+    "name": "screenshot timing",
+    "action": "screenshot",
+    "created_at": "1774084643416",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5570"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774084641275",
+    "name": "HOME timing",
+    "action": "keyevent",
+    "created_at": "1774084641275",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5570"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774084551637",
+    "name": "批量截图",
+    "action": "screenshot",
+    "created_at": "1774084551637",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5570"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774084512221",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1774084512221",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5570"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774083910690",
+    "name": "批量投屏",
+    "action": "mirror",
+    "created_at": "1774083910690",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5570"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1774081119181",
+    "name": "批量投屏",
+    "action": "mirror",
+    "created_at": "1774081119181",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "192.168.31.9:5570"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773793632504",
+    "name": "codex-review-queue",
+    "action": "keyevent",
+    "created_at": "1773793632504",
+    "device_count": 1,
+    "success_count": 0,
+    "failure_count": 1,
+    "serials": [
+      "definitely-missing-device"
+    ],
+    "template_id": "task-1773793632469"
+  },
+  {
+    "id": "run-1773778514755",
+    "name": "安装 APK · 1773778447651-codex-b.apk",
+    "action": "install",
+    "created_at": "1773778514755",
+    "device_count": 1,
+    "success_count": 0,
+    "failure_count": 1,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773777549510",
+    "name": "回归-ADB巡检",
+    "action": "shell",
+    "created_at": "1773777549510",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d",
+      "2069492e"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773771456748",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1773771456748",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "2069492e",
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773771456555",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1773771456555",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "2069492e",
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773771456302",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1773771456302",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "2069492e",
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773771455967",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1773771455967",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "2069492e",
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773771453785",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1773771453785",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "2069492e",
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773771453530",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1773771453531",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "2069492e",
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773771453303",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1773771453303",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "2069492e",
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773771453296",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1773771453296",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "2069492e",
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773771452802",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1773771452802",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "2069492e",
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773771452649",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1773771452649",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "2069492e",
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773771452319",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1773771452319",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "2069492e",
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773771452082",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1773771452082",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "2069492e",
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773771451901",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1773771451901",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "2069492e",
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773771451752",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1773771451752",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "2069492e",
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773771451578",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1773771451578",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "2069492e",
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773771451380",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1773771451380",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "2069492e",
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773771451033",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1773771451033",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "2069492e",
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773771448265",
+    "name": "批量按键",
+    "action": "keyevent",
+    "created_at": "1773771448265",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "2069492e",
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773771423763",
+    "name": "批量投屏",
+    "action": "mirror",
+    "created_at": "1773771423763",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "21853937"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773768869757",
+    "name": "回归-剪贴板分发",
+    "action": "clipboard",
+    "created_at": "1773768869757",
+    "device_count": 1,
+    "success_count": 0,
+    "failure_count": 1,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773768813870",
+    "name": "回归-不同文本分发",
+    "action": "text_dispatch",
+    "created_at": "1773768813870",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d",
+      "2069492e"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773768813425",
+    "name": "回归-剪贴板分发",
+    "action": "clipboard",
+    "created_at": "1773768813425",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773767463142",
+    "name": "回归-多文件分发",
+    "action": "push_files",
+    "created_at": "1773767463142",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d",
+      "2069492e"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773767221282",
+    "name": "回归-批量导出文件",
+    "action": "pull_file",
+    "created_at": "1773767221282",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d",
+      "2069492e"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773767215739",
+    "name": "回归-批量传文件",
+    "action": "push_file",
+    "created_at": "1773767215740",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d",
+      "2069492e"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773765661027",
+    "name": "录制草稿",
+    "action": "recording",
+    "created_at": "1773765661027",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773765637994",
+    "name": "批量点击",
+    "action": "tap",
+    "created_at": "1773765637994",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773765637972",
+    "name": "批量点击",
+    "action": "tap",
+    "created_at": "1773765637972",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773765637555",
+    "name": "批量滑动",
+    "action": "swipe",
+    "created_at": "1773765637555",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773765217941",
+    "name": "回归-草稿回放",
+    "action": "recording",
+    "created_at": "1773765217941",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d",
+      "2069492e"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773765030567",
+    "name": "批量点击",
+    "action": "tap",
+    "created_at": "1773765030567",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773764598628",
+    "name": "功能自检-录制",
+    "action": "recording",
+    "created_at": "1773764598628",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d",
+      "2069492e"
+    ],
+    "template_id": "recording-1773764590786"
+  },
+  {
+    "id": "run-1773764316338",
+    "name": "压测-19台-HOME",
+    "action": "keyevent",
+    "created_at": "1773764316338",
+    "device_count": 19,
+    "success_count": 19,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d",
+      "2069492e",
+      "20a6850e",
+      "21853937",
+      "21a81c0d",
+      "21d44c21",
+      "39dfcae0",
+      "3e8eca4e",
+      "4916c2c0",
+      "98b900d",
+      "9f5bac73",
+      "be6a14",
+      "ce4ec497",
+      "da5dc499",
+      "dac9c460",
+      "e13dc4ca",
+      "e60cc56",
+      "f0416a99",
+      "f4fc6dd"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773764314830",
+    "name": "压测-19台-停止设置",
+    "action": "stop",
+    "created_at": "1773764314830",
+    "device_count": 19,
+    "success_count": 19,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d",
+      "2069492e",
+      "20a6850e",
+      "21853937",
+      "21a81c0d",
+      "21d44c21",
+      "39dfcae0",
+      "3e8eca4e",
+      "4916c2c0",
+      "98b900d",
+      "9f5bac73",
+      "be6a14",
+      "ce4ec497",
+      "da5dc499",
+      "dac9c460",
+      "e13dc4ca",
+      "e60cc56",
+      "f0416a99",
+      "f4fc6dd"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773764314677",
+    "name": "压测-19台-启动设置",
+    "action": "launch",
+    "created_at": "1773764314677",
+    "device_count": 19,
+    "success_count": 19,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d",
+      "2069492e",
+      "20a6850e",
+      "21853937",
+      "21a81c0d",
+      "21d44c21",
+      "39dfcae0",
+      "3e8eca4e",
+      "4916c2c0",
+      "98b900d",
+      "9f5bac73",
+      "be6a14",
+      "ce4ec497",
+      "da5dc499",
+      "dac9c460",
+      "e13dc4ca",
+      "e60cc56",
+      "f0416a99",
+      "f4fc6dd"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773764112680",
+    "name": "功能自检-安装APK",
+    "action": "install",
+    "created_at": "1773764112680",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773763874496",
+    "name": "功能自检-输入结果截图",
+    "action": "screenshot",
+    "created_at": "1773763874496",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773763873492",
+    "name": "功能自检-搜索框输入",
+    "action": "text",
+    "created_at": "1773763873492",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773763859551",
+    "name": "功能自检-点搜索后截图",
+    "action": "screenshot",
+    "created_at": "1773763859551",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773763857018",
+    "name": "功能自检-精确点搜索框",
+    "action": "tap",
+    "created_at": "1773763857018",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773763807974",
+    "name": "功能自检-输入后截图",
+    "action": "screenshot",
+    "created_at": "1773763807974",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773763792402",
+    "name": "功能自检-输入文字",
+    "action": "text",
+    "created_at": "1773763792402",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773763791034",
+    "name": "功能自检-点搜索框",
+    "action": "tap",
+    "created_at": "1773763791034",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773763789798",
+    "name": "功能自检-重开设置",
+    "action": "launch",
+    "created_at": "1773763789798",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773763764917",
+    "name": "功能自检-滑动后截图",
+    "action": "screenshot",
+    "created_at": "1773763764917",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773763764123",
+    "name": "功能自检-滑动设置页",
+    "action": "swipe",
+    "created_at": "1773763764123",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773763738008",
+    "name": "功能自检-点击后截图",
+    "action": "screenshot",
+    "created_at": "1773763738008",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773763736920",
+    "name": "功能自检-点击设置",
+    "action": "tap",
+    "created_at": "1773763736920",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773763712088",
+    "name": "功能自检-前置截图",
+    "action": "screenshot",
+    "created_at": "1773763712088",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773763647323",
+    "name": "功能自检-停止设置",
+    "action": "stop",
+    "created_at": "1773763647323",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773763635657",
+    "name": "功能自检-HOME",
+    "action": "keyevent",
+    "created_at": "1773763635657",
+    "device_count": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d",
+      "2069492e"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773763635402",
+    "name": "功能自检-启动设置",
+    "action": "launch",
+    "created_at": "1773763635402",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773763635231",
+    "name": "功能自检-Shell",
+    "action": "shell",
+    "created_at": "1773763635231",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773763486557",
+    "name": "screenshot",
+    "action": "screenshot",
+    "created_at": "1773763486557",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  },
+  {
+    "id": "run-1773763485033",
+    "name": "回桌面模板",
+    "action": "keyevent",
+    "created_at": "1773763485033",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": "task-1773763109500"
+  },
+  {
+    "id": "run-1773763110287",
+    "name": "回桌面测试",
+    "action": "keyevent",
+    "created_at": "1773763110287",
+    "device_count": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "serials": [
+      "1ca3a42d"
+    ],
+    "template_id": null
+  }
+]

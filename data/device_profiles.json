@@ -1,0 +1,2037 @@
+[
+  {
+    "name": "Xiaomi 10",
+    "codename": "umi",
+    "identifiers": {
+      "ro.product.model": "M2001J2C",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "umi",
+      "ro.product.name": "umi",
+      "ro.build.product": "umi"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/umi/umi:13/TKQ1.221114.001/V14.0.4.0.TJBCNXM:user/release-keys",
+      "ro.build.display.id": "TKQ1.221114.001",
+      "ro.build.version.release": "13",
+      "ro.build.version.sdk": "33"
+    },
+    "screen": {
+      "resolution": "1080x2340",
+      "width": 1080,
+      "height": 2340,
+      "dpi": 440,
+      "ratio": "19.5:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "kona",
+      "chipset": "Snapdragon 865"
+    },
+    "imei": {
+      "tac": [
+        "86154803",
+        "86889104",
+        "35458231"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi 10 Pro",
+    "codename": "cmi",
+    "identifiers": {
+      "ro.product.model": "M2001J1C",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "cmi",
+      "ro.product.name": "cmi",
+      "ro.build.product": "cmi"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/cmi/cmi:13/TKQ1.221114.001/V14.0.4.0.TJACNXM:user/release-keys",
+      "ro.build.display.id": "TKQ1.221114.001",
+      "ro.build.version.release": "13",
+      "ro.build.version.sdk": "33"
+    },
+    "screen": {
+      "resolution": "1080x2340",
+      "width": 1080,
+      "height": 2340,
+      "dpi": 440,
+      "ratio": "19.5:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "kona",
+      "chipset": "Snapdragon 865"
+    },
+    "imei": {
+      "tac": [
+        "86154903",
+        "86889204",
+        "35458331"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi 10 Ultra",
+    "codename": "cas",
+    "identifiers": {
+      "ro.product.model": "M2007J1SC",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "cas",
+      "ro.product.name": "cas",
+      "ro.build.product": "cas"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/cas/cas:13/TKQ1.221114.001/V14.0.1.0.TJJCNXM:user/release-keys",
+      "ro.build.display.id": "TKQ1.221114.001",
+      "ro.build.version.release": "13",
+      "ro.build.version.sdk": "33"
+    },
+    "screen": {
+      "resolution": "1080x2340",
+      "width": 1080,
+      "height": 2340,
+      "dpi": 440,
+      "ratio": "19.5:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "kona",
+      "chipset": "Snapdragon 865"
+    },
+    "imei": {
+      "tac": [
+        "86223004",
+        "86907404",
+        "35783631"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi 11",
+    "codename": "venus",
+    "identifiers": {
+      "ro.product.model": "M2011K2C",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "venus",
+      "ro.product.name": "venus",
+      "ro.build.product": "venus"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/venus/venus:14/UKQ1.231003.002/V816.0.3.0.UKBCNXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1440x3200",
+      "width": 1440,
+      "height": 3200,
+      "dpi": 515,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "lahaina",
+      "chipset": "Snapdragon 888"
+    },
+    "imei": {
+      "tac": [
+        "86448505",
+        "86795105",
+        "35469531"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi 11 Pro",
+    "codename": "mars",
+    "identifiers": {
+      "ro.product.model": "M2102K1AC",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "mars",
+      "ro.product.name": "mars",
+      "ro.build.product": "mars"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/mars/mars:14/UKQ1.231003.002/V816.0.2.0.UKACNXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1440x3200",
+      "width": 1440,
+      "height": 3200,
+      "dpi": 515,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "lahaina",
+      "chipset": "Snapdragon 888"
+    },
+    "imei": {
+      "tac": [
+        "86448605",
+        "86795205",
+        "35469631"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi 11 Ultra",
+    "codename": "star",
+    "identifiers": {
+      "ro.product.model": "M2102K1G",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "star",
+      "ro.product.name": "star",
+      "ro.build.product": "star"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/star/star:14/UKQ1.231003.002/V816.0.2.0.UKACNXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1440x3200",
+      "width": 1440,
+      "height": 3200,
+      "dpi": 515,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "lahaina",
+      "chipset": "Snapdragon 888"
+    },
+    "imei": {
+      "tac": [
+        "86448705",
+        "86795305",
+        "35469731"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi 12",
+    "codename": "cupid",
+    "identifiers": {
+      "ro.product.model": "2201123C",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "cupid",
+      "ro.product.name": "cupid",
+      "ro.build.product": "cupid"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/cupid/cupid:14/UKQ1.231003.002/V816.0.4.0.ULCCNXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1080x2400",
+      "width": 1080,
+      "height": 2400,
+      "dpi": 419,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "taro",
+      "chipset": "Snapdragon 8 Gen 1"
+    },
+    "imei": {
+      "tac": [
+        "86826106",
+        "86293706",
+        "35842031"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi 12 Pro",
+    "codename": "zeus",
+    "identifiers": {
+      "ro.product.model": "2201122C",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "zeus",
+      "ro.product.name": "zeus",
+      "ro.build.product": "zeus"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/zeus/zeus:14/UKQ1.231003.002/V816.0.3.0.ULBCNXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1440x3200",
+      "width": 1440,
+      "height": 3200,
+      "dpi": 522,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "taro",
+      "chipset": "Snapdragon 8 Gen 1"
+    },
+    "imei": {
+      "tac": [
+        "86826206",
+        "86293806",
+        "35842131"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi 12S Ultra",
+    "codename": "thor",
+    "identifiers": {
+      "ro.product.model": "2206122SC",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "thor",
+      "ro.product.name": "thor",
+      "ro.build.product": "thor"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/thor/thor:14/UKQ1.231003.002/V816.0.2.0.ULLCNXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1440x3200",
+      "width": 1440,
+      "height": 3200,
+      "dpi": 522,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "taro",
+      "chipset": "Snapdragon 8+ Gen 1"
+    },
+    "imei": {
+      "tac": [
+        "86953806",
+        "86436206",
+        "35915331"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi 13",
+    "codename": "fuxi",
+    "identifiers": {
+      "ro.product.model": "2211133C",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "fuxi",
+      "ro.product.name": "fuxi",
+      "ro.build.product": "fuxi"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/fuxi/fuxi:14/UKQ1.231003.002/V816.0.9.0.UMCCNXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1080x2400",
+      "width": 1080,
+      "height": 2400,
+      "dpi": 440,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "kalama",
+      "chipset": "Snapdragon 8 Gen 2"
+    },
+    "imei": {
+      "tac": [
+        "86156107",
+        "86397407",
+        "35206731"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi 13 Pro",
+    "codename": "nuwa",
+    "identifiers": {
+      "ro.product.model": "2210132C",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "nuwa",
+      "ro.product.name": "nuwa",
+      "ro.build.product": "nuwa"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/nuwa/nuwa:14/UKQ1.231003.002/V816.0.6.0.UMBCNXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1440x3200",
+      "width": 1440,
+      "height": 3200,
+      "dpi": 440,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "kalama",
+      "chipset": "Snapdragon 8 Gen 2"
+    },
+    "imei": {
+      "tac": [
+        "86156207",
+        "86397507",
+        "35206831"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi 13 Ultra",
+    "codename": "ishtar",
+    "identifiers": {
+      "ro.product.model": "2304FPN6DC",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "ishtar",
+      "ro.product.name": "ishtar",
+      "ro.build.product": "ishtar"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/ishtar/ishtar:14/UKQ1.231003.002/V816.0.5.0.UMACNXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1440x3200",
+      "width": 1440,
+      "height": 3200,
+      "dpi": 522,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "kalama",
+      "chipset": "Snapdragon 8 Gen 2"
+    },
+    "imei": {
+      "tac": [
+        "86258307",
+        "86573007",
+        "35367831"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi 14",
+    "codename": "houji",
+    "identifiers": {
+      "ro.product.model": "23127PN0CC",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "houji",
+      "ro.product.name": "houji",
+      "ro.build.product": "houji"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/houji/houji:15/AQ3A.240812.002/V816.1.3.0.VNCCNXM:user/release-keys",
+      "ro.build.display.id": "AQ3A.240812.002",
+      "ro.build.version.release": "15",
+      "ro.build.version.sdk": "35"
+    },
+    "screen": {
+      "resolution": "1200x2670",
+      "width": 1200,
+      "height": 2670,
+      "dpi": 460,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "pineapple",
+      "chipset": "Snapdragon 8 Gen 3"
+    },
+    "imei": {
+      "tac": [
+        "86461508",
+        "86738208",
+        "35524831"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi 14 Pro",
+    "codename": "shennong",
+    "identifiers": {
+      "ro.product.model": "23116PN5BC",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "shennong",
+      "ro.product.name": "shennong",
+      "ro.build.product": "shennong"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/shennong/shennong:15/AQ3A.240812.002/V816.1.2.0.VNBCNXM:user/release-keys",
+      "ro.build.display.id": "AQ3A.240812.002",
+      "ro.build.version.release": "15",
+      "ro.build.version.sdk": "35"
+    },
+    "screen": {
+      "resolution": "1440x3200",
+      "width": 1440,
+      "height": 3200,
+      "dpi": 480,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "pineapple",
+      "chipset": "Snapdragon 8 Gen 3"
+    },
+    "imei": {
+      "tac": [
+        "86461608",
+        "86738308",
+        "35524931"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi 14 Ultra",
+    "codename": "aurora",
+    "identifiers": {
+      "ro.product.model": "24030PN60C",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "aurora",
+      "ro.product.name": "aurora",
+      "ro.build.product": "aurora"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/aurora/aurora:15/AQ3A.240812.002/V816.1.1.0.VNACNXM:user/release-keys",
+      "ro.build.display.id": "AQ3A.240812.002",
+      "ro.build.version.release": "15",
+      "ro.build.version.sdk": "35"
+    },
+    "screen": {
+      "resolution": "1440x3200",
+      "width": 1440,
+      "height": 3200,
+      "dpi": 522,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "pineapple",
+      "chipset": "Snapdragon 8 Gen 3"
+    },
+    "imei": {
+      "tac": [
+        "86571208",
+        "86893708",
+        "35637831"
+      ]
+    }
+  },
+  {
+    "name": "Redmi K30 5G",
+    "codename": "picasso",
+    "identifiers": {
+      "ro.product.model": "M2001G7AC",
+      "ro.product.brand": "Redmi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "picasso",
+      "ro.product.name": "picasso",
+      "ro.build.product": "picasso"
+    },
+    "build": {
+      "ro.build.fingerprint": "Redmi/picasso/picasso:12/SKQ1.211006.001/V13.0.4.0.SGICNXM:user/release-keys",
+      "ro.build.display.id": "SKQ1.211006.001",
+      "ro.build.version.release": "12",
+      "ro.build.version.sdk": "32"
+    },
+    "screen": {
+      "resolution": "1080x2400",
+      "width": 1080,
+      "height": 2400,
+      "dpi": 395,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "sm6250",
+      "chipset": "Snapdragon 765G"
+    },
+    "imei": {
+      "tac": [
+        "86154703",
+        "86889004",
+        "35458131"
+      ]
+    }
+  },
+  {
+    "name": "Redmi K30 Pro",
+    "codename": "lmi",
+    "identifiers": {
+      "ro.product.model": "M2001J11C",
+      "ro.product.brand": "Redmi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "lmi",
+      "ro.product.name": "lmi",
+      "ro.build.product": "lmi"
+    },
+    "build": {
+      "ro.build.fingerprint": "Redmi/lmi/lmi:13/TKQ1.221114.001/V14.0.2.0.TJKCNXM:user/release-keys",
+      "ro.build.display.id": "TKQ1.221114.001",
+      "ro.build.version.release": "13",
+      "ro.build.version.sdk": "33"
+    },
+    "screen": {
+      "resolution": "1080x2400",
+      "width": 1080,
+      "height": 2400,
+      "dpi": 440,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "kona",
+      "chipset": "Snapdragon 865"
+    },
+    "imei": {
+      "tac": [
+        "86154604",
+        "86889304",
+        "35458431"
+      ]
+    }
+  },
+  {
+    "name": "Redmi K40",
+    "codename": "alioth",
+    "identifiers": {
+      "ro.product.model": "M2012K11AC",
+      "ro.product.brand": "Redmi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "alioth",
+      "ro.product.name": "alioth",
+      "ro.build.product": "alioth"
+    },
+    "build": {
+      "ro.build.fingerprint": "Redmi/alioth/alioth:13/TKQ1.221114.001/V14.0.8.0.TKHECNXM:user/release-keys",
+      "ro.build.display.id": "TKQ1.221114.001",
+      "ro.build.version.release": "13",
+      "ro.build.version.sdk": "33"
+    },
+    "screen": {
+      "resolution": "1080x2400",
+      "width": 1080,
+      "height": 2400,
+      "dpi": 395,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "kona",
+      "chipset": "Snapdragon 870"
+    },
+    "imei": {
+      "tac": [
+        "86448805",
+        "86795405",
+        "35469831"
+      ]
+    }
+  },
+  {
+    "name": "Redmi K40 Pro",
+    "codename": "haydn",
+    "identifiers": {
+      "ro.product.model": "M2012K11C",
+      "ro.product.brand": "Redmi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "haydn",
+      "ro.product.name": "haydn",
+      "ro.build.product": "haydn"
+    },
+    "build": {
+      "ro.build.fingerprint": "Redmi/haydn/haydn:13/TKQ1.221114.001/V14.0.5.0.TKHCNXM:user/release-keys",
+      "ro.build.display.id": "TKQ1.221114.001",
+      "ro.build.version.release": "13",
+      "ro.build.version.sdk": "33"
+    },
+    "screen": {
+      "resolution": "1080x2400",
+      "width": 1080,
+      "height": 2400,
+      "dpi": 395,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "lahaina",
+      "chipset": "Snapdragon 888"
+    },
+    "imei": {
+      "tac": [
+        "86448905",
+        "86795505",
+        "35469931"
+      ]
+    }
+  },
+  {
+    "name": "Redmi K50",
+    "codename": "rubens",
+    "identifiers": {
+      "ro.product.model": "22041211AC",
+      "ro.product.brand": "Redmi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "rubens",
+      "ro.product.name": "rubens",
+      "ro.build.product": "rubens"
+    },
+    "build": {
+      "ro.build.fingerprint": "Redmi/rubens/rubens:14/UP1A.231005.007/V816.0.3.0.ULNCNXM:user/release-keys",
+      "ro.build.display.id": "UP1A.231005.007",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1440x3200",
+      "width": 1440,
+      "height": 3200,
+      "dpi": 526,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "mt6895",
+      "ro.board.platform": "mt6895",
+      "chipset": "Dimensity 8100"
+    },
+    "imei": {
+      "tac": [
+        "86826306",
+        "86293906",
+        "35842231"
+      ]
+    }
+  },
+  {
+    "name": "Redmi K50 Pro",
+    "codename": "matisse",
+    "identifiers": {
+      "ro.product.model": "22041216C",
+      "ro.product.brand": "Redmi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "matisse",
+      "ro.product.name": "matisse",
+      "ro.build.product": "matisse"
+    },
+    "build": {
+      "ro.build.fingerprint": "Redmi/matisse/matisse:14/UP1A.231005.007/V816.0.3.0.ULKCNXM:user/release-keys",
+      "ro.build.display.id": "UP1A.231005.007",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1440x3200",
+      "width": 1440,
+      "height": 3200,
+      "dpi": 526,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "mt6895",
+      "ro.board.platform": "mt6895",
+      "chipset": "Dimensity 9000"
+    },
+    "imei": {
+      "tac": [
+        "86826406",
+        "86294006",
+        "35842331"
+      ]
+    }
+  },
+  {
+    "name": "Redmi K50 Ultra",
+    "codename": "diting",
+    "identifiers": {
+      "ro.product.model": "22081212C",
+      "ro.product.brand": "Redmi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "diting",
+      "ro.product.name": "diting",
+      "ro.build.product": "diting"
+    },
+    "build": {
+      "ro.build.fingerprint": "Redmi/diting/diting:14/UKQ1.231003.002/V816.0.4.0.ULJCNXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1220x2712",
+      "width": 1220,
+      "height": 2712,
+      "dpi": 446,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "taro",
+      "chipset": "Snapdragon 8+ Gen 1"
+    },
+    "imei": {
+      "tac": [
+        "86953906",
+        "86436306",
+        "35915431"
+      ]
+    }
+  },
+  {
+    "name": "Redmi K60",
+    "codename": "mondrian",
+    "identifiers": {
+      "ro.product.model": "23013RK75C",
+      "ro.product.brand": "Redmi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "mondrian",
+      "ro.product.name": "mondrian",
+      "ro.build.product": "mondrian"
+    },
+    "build": {
+      "ro.build.fingerprint": "Redmi/mondrian/mondrian:14/UKQ1.231003.002/V816.0.6.0.UMNCCNXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1440x3200",
+      "width": 1440,
+      "height": 3200,
+      "dpi": 560,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "taro",
+      "chipset": "Snapdragon 8+ Gen 1"
+    },
+    "imei": {
+      "tac": [
+        "86156307",
+        "86397607",
+        "35206931"
+      ]
+    }
+  },
+  {
+    "name": "Redmi K60 Pro",
+    "codename": "socrates",
+    "identifiers": {
+      "ro.product.model": "22127RK46C",
+      "ro.product.brand": "Redmi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "socrates",
+      "ro.product.name": "socrates",
+      "ro.build.product": "socrates"
+    },
+    "build": {
+      "ro.build.fingerprint": "Redmi/socrates/socrates:14/UKQ1.231003.002/V816.0.5.0.UMKCNXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1440x3200",
+      "width": 1440,
+      "height": 3200,
+      "dpi": 526,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "kalama",
+      "chipset": "Snapdragon 8 Gen 2"
+    },
+    "imei": {
+      "tac": [
+        "86156407",
+        "86397707",
+        "35207031"
+      ]
+    }
+  },
+  {
+    "name": "Redmi K60 Ultra",
+    "codename": "corot",
+    "identifiers": {
+      "ro.product.model": "23078RKD5C",
+      "ro.product.brand": "Redmi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "corot",
+      "ro.product.name": "corot",
+      "ro.build.product": "corot"
+    },
+    "build": {
+      "ro.build.fingerprint": "Redmi/corot/corot:14/UP1A.231005.007/V816.0.4.0.UMJCNXM:user/release-keys",
+      "ro.build.display.id": "UP1A.231005.007",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1220x2712",
+      "width": 1220,
+      "height": 2712,
+      "dpi": 446,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "mt6985",
+      "ro.board.platform": "mt6985",
+      "chipset": "Dimensity 9200+"
+    },
+    "imei": {
+      "tac": [
+        "86258407",
+        "86573107",
+        "35367931"
+      ]
+    }
+  },
+  {
+    "name": "Redmi K70",
+    "codename": "vermeer",
+    "identifiers": {
+      "ro.product.model": "23113RKC6C",
+      "ro.product.brand": "Redmi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "vermeer",
+      "ro.product.name": "vermeer",
+      "ro.build.product": "vermeer"
+    },
+    "build": {
+      "ro.build.fingerprint": "Redmi/vermeer/vermeer:14/UKQ1.231003.002/V816.0.8.0.UNCCCNXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1440x3200",
+      "width": 1440,
+      "height": 3200,
+      "dpi": 526,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "pineapple",
+      "chipset": "Snapdragon 8 Gen 2"
+    },
+    "imei": {
+      "tac": [
+        "86461708",
+        "86738408",
+        "35525031"
+      ]
+    }
+  },
+  {
+    "name": "Redmi K70 Pro",
+    "codename": "manet",
+    "identifiers": {
+      "ro.product.model": "23113RKC7C",
+      "ro.product.brand": "Redmi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "manet",
+      "ro.product.name": "manet",
+      "ro.build.product": "manet"
+    },
+    "build": {
+      "ro.build.fingerprint": "Redmi/manet/manet:14/UKQ1.231003.002/V816.0.7.0.UNBCNXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1440x3200",
+      "width": 1440,
+      "height": 3200,
+      "dpi": 526,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "pineapple",
+      "chipset": "Snapdragon 8 Gen 3"
+    },
+    "imei": {
+      "tac": [
+        "86461808",
+        "86738508",
+        "35525131"
+      ]
+    }
+  },
+  {
+    "name": "Redmi K70 Ultra",
+    "codename": "rothko",
+    "identifiers": {
+      "ro.product.model": "24069RA21C",
+      "ro.product.brand": "Redmi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "rothko",
+      "ro.product.name": "rothko",
+      "ro.build.product": "rothko"
+    },
+    "build": {
+      "ro.build.fingerprint": "Redmi/rothko/rothko:14/UP1A.231005.007/V816.0.3.0.UNKCNXM:user/release-keys",
+      "ro.build.display.id": "UP1A.231005.007",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1220x2712",
+      "width": 1220,
+      "height": 2712,
+      "dpi": 446,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "mt6989",
+      "ro.board.platform": "mt6989",
+      "chipset": "Dimensity 9300+"
+    },
+    "imei": {
+      "tac": [
+        "86571308",
+        "86893808",
+        "35637931"
+      ]
+    }
+  },
+  {
+    "name": "Redmi Note 10 Pro",
+    "codename": "sweet",
+    "identifiers": {
+      "ro.product.model": "M2101K6G",
+      "ro.product.brand": "Redmi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "sweet",
+      "ro.product.name": "sweet",
+      "ro.build.product": "sweet"
+    },
+    "build": {
+      "ro.build.fingerprint": "Redmi/sweet/sweet:13/TKQ1.221114.001/V14.0.5.0.TKFMIXM:user/release-keys",
+      "ro.build.display.id": "TKQ1.221114.001",
+      "ro.build.version.release": "13",
+      "ro.build.version.sdk": "33"
+    },
+    "screen": {
+      "resolution": "1080x2400",
+      "width": 1080,
+      "height": 2400,
+      "dpi": 395,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "sm7150",
+      "chipset": "Snapdragon 732G"
+    },
+    "imei": {
+      "tac": [
+        "86448405",
+        "86795005",
+        "35469531"
+      ]
+    }
+  },
+  {
+    "name": "Redmi Note 11 Pro",
+    "codename": "viva",
+    "identifiers": {
+      "ro.product.model": "2201116SC",
+      "ro.product.brand": "Redmi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "viva",
+      "ro.product.name": "viva",
+      "ro.build.product": "viva"
+    },
+    "build": {
+      "ro.build.fingerprint": "Redmi/viva/viva:13/TP1A.220624.014/V14.0.3.0.TKMCNXM:user/release-keys",
+      "ro.build.display.id": "TP1A.220624.014",
+      "ro.build.version.release": "13",
+      "ro.build.version.sdk": "33"
+    },
+    "screen": {
+      "resolution": "1080x2400",
+      "width": 1080,
+      "height": 2400,
+      "dpi": 395,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "mt6877",
+      "ro.board.platform": "mt6877",
+      "chipset": "Dimensity 920"
+    },
+    "imei": {
+      "tac": [
+        "86826506",
+        "86294106",
+        "35842431"
+      ]
+    }
+  },
+  {
+    "name": "Redmi Note 11 Pro+",
+    "codename": "pissarro",
+    "identifiers": {
+      "ro.product.model": "21091116C",
+      "ro.product.brand": "Redmi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "pissarro",
+      "ro.product.name": "pissarro",
+      "ro.build.product": "pissarro"
+    },
+    "build": {
+      "ro.build.fingerprint": "Redmi/pissarro/pissarro:13/TP1A.220624.014/V14.0.4.0.TKTCNXM:user/release-keys",
+      "ro.build.display.id": "TP1A.220624.014",
+      "ro.build.version.release": "13",
+      "ro.build.version.sdk": "33"
+    },
+    "screen": {
+      "resolution": "1080x2400",
+      "width": 1080,
+      "height": 2400,
+      "dpi": 395,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "mt6895",
+      "ro.board.platform": "mt6895",
+      "chipset": "Dimensity 920"
+    },
+    "imei": {
+      "tac": [
+        "86826606",
+        "86294206",
+        "35842531"
+      ]
+    }
+  },
+  {
+    "name": "Redmi Note 12 Pro",
+    "codename": "ruby",
+    "identifiers": {
+      "ro.product.model": "22101316C",
+      "ro.product.brand": "Redmi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "ruby",
+      "ro.product.name": "ruby",
+      "ro.build.product": "ruby"
+    },
+    "build": {
+      "ro.build.fingerprint": "Redmi/ruby/ruby:14/UKQ1.231003.002/V816.0.3.0.UMOCNXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1080x2400",
+      "width": 1080,
+      "height": 2400,
+      "dpi": 395,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "mt6877",
+      "ro.board.platform": "mt6877",
+      "chipset": "Dimensity 1080"
+    },
+    "imei": {
+      "tac": [
+        "86156507",
+        "86397807",
+        "35207131"
+      ]
+    }
+  },
+  {
+    "name": "Redmi Note 12 Pro+",
+    "codename": "zircon",
+    "identifiers": {
+      "ro.product.model": "22101316UC",
+      "ro.product.brand": "Redmi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "zircon",
+      "ro.product.name": "zircon",
+      "ro.build.product": "zircon"
+    },
+    "build": {
+      "ro.build.fingerprint": "Redmi/zircon/zircon:14/UKQ1.231003.002/V816.0.3.0.UMPCNXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1080x2400",
+      "width": 1080,
+      "height": 2400,
+      "dpi": 395,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "mt6895",
+      "ro.board.platform": "mt6895",
+      "chipset": "Dimensity 1080"
+    },
+    "imei": {
+      "tac": [
+        "86156607",
+        "86397907",
+        "35207231"
+      ]
+    }
+  },
+  {
+    "name": "Redmi Note 13 Pro",
+    "codename": "garnet",
+    "identifiers": {
+      "ro.product.model": "23090RA98C",
+      "ro.product.brand": "Redmi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "garnet",
+      "ro.product.name": "garnet",
+      "ro.build.product": "garnet"
+    },
+    "build": {
+      "ro.build.fingerprint": "Redmi/garnet/garnet:14/UKQ1.231003.002/V816.0.5.0.UNRCNXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1220x2712",
+      "width": 1220,
+      "height": 2712,
+      "dpi": 446,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "sm7150",
+      "chipset": "Snapdragon 7s Gen 2"
+    },
+    "imei": {
+      "tac": [
+        "86461908",
+        "86738608",
+        "35525231"
+      ]
+    }
+  },
+  {
+    "name": "Redmi Note 13 Pro+",
+    "codename": "zircon",
+    "identifiers": {
+      "ro.product.model": "23090RA9BC",
+      "ro.product.brand": "Redmi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "duchamp",
+      "ro.product.name": "duchamp",
+      "ro.build.product": "duchamp"
+    },
+    "build": {
+      "ro.build.fingerprint": "Redmi/duchamp/duchamp:14/UP1A.231005.007/V816.0.4.0.UNSCNXM:user/release-keys",
+      "ro.build.display.id": "UP1A.231005.007",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1220x2712",
+      "width": 1220,
+      "height": 2712,
+      "dpi": 446,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "mt6895",
+      "ro.board.platform": "mt6895",
+      "chipset": "Dimensity 7200 Ultra"
+    },
+    "imei": {
+      "tac": [
+        "86462008",
+        "86738708",
+        "35525331"
+      ]
+    }
+  },
+  {
+    "name": "POCO F3",
+    "codename": "alioth",
+    "identifiers": {
+      "ro.product.model": "M2012K11AG",
+      "ro.product.brand": "POCO",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "alioth",
+      "ro.product.name": "alioth_global",
+      "ro.build.product": "alioth"
+    },
+    "build": {
+      "ro.build.fingerprint": "POCO/alioth_global/alioth:13/TKQ1.221114.001/V14.0.6.0.TKHMIXM:user/release-keys",
+      "ro.build.display.id": "TKQ1.221114.001",
+      "ro.build.version.release": "13",
+      "ro.build.version.sdk": "33"
+    },
+    "screen": {
+      "resolution": "1080x2400",
+      "width": 1080,
+      "height": 2400,
+      "dpi": 395,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "kona",
+      "chipset": "Snapdragon 870"
+    },
+    "imei": {
+      "tac": [
+        "86449005",
+        "86795605",
+        "35470031"
+      ]
+    }
+  },
+  {
+    "name": "POCO F4 GT",
+    "codename": "ingres",
+    "identifiers": {
+      "ro.product.model": "22021211RG",
+      "ro.product.brand": "POCO",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "ingres",
+      "ro.product.name": "ingres_global",
+      "ro.build.product": "ingres"
+    },
+    "build": {
+      "ro.build.fingerprint": "POCO/ingres_global/ingres:14/UKQ1.231003.002/V816.0.2.0.ULJMIXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1080x2400",
+      "width": 1080,
+      "height": 2400,
+      "dpi": 395,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "taro",
+      "chipset": "Snapdragon 8 Gen 1"
+    },
+    "imei": {
+      "tac": [
+        "86826706",
+        "86294306",
+        "35842631"
+      ]
+    }
+  },
+  {
+    "name": "POCO F5",
+    "codename": "marble",
+    "identifiers": {
+      "ro.product.model": "23049PCD8G",
+      "ro.product.brand": "POCO",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "marble",
+      "ro.product.name": "marble_global",
+      "ro.build.product": "marble"
+    },
+    "build": {
+      "ro.build.fingerprint": "POCO/marble_global/marble:14/UKQ1.231003.002/V816.0.4.0.UMRMIXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1080x2400",
+      "width": 1080,
+      "height": 2400,
+      "dpi": 395,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "taro",
+      "chipset": "Snapdragon 7+ Gen 2"
+    },
+    "imei": {
+      "tac": [
+        "86258507",
+        "86573207",
+        "35368031"
+      ]
+    }
+  },
+  {
+    "name": "POCO F5 Pro",
+    "codename": "mondrian",
+    "identifiers": {
+      "ro.product.model": "23013PC75G",
+      "ro.product.brand": "POCO",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "mondrian",
+      "ro.product.name": "mondrian_global",
+      "ro.build.product": "mondrian"
+    },
+    "build": {
+      "ro.build.fingerprint": "POCO/mondrian_global/mondrian:14/UKQ1.231003.002/V816.0.4.0.UMNMIXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1440x3200",
+      "width": 1440,
+      "height": 3200,
+      "dpi": 526,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "taro",
+      "chipset": "Snapdragon 8+ Gen 1"
+    },
+    "imei": {
+      "tac": [
+        "86258607",
+        "86573307",
+        "35368131"
+      ]
+    }
+  },
+  {
+    "name": "POCO F6 Pro",
+    "codename": "vermeer",
+    "identifiers": {
+      "ro.product.model": "24069PC21G",
+      "ro.product.brand": "POCO",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "vermeer",
+      "ro.product.name": "vermeer_global",
+      "ro.build.product": "vermeer"
+    },
+    "build": {
+      "ro.build.fingerprint": "POCO/vermeer_global/vermeer:14/UKQ1.231003.002/V816.0.5.0.UNCCMIXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1440x3200",
+      "width": 1440,
+      "height": 3200,
+      "dpi": 526,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "pineapple",
+      "chipset": "Snapdragon 8 Gen 2"
+    },
+    "imei": {
+      "tac": [
+        "86571408",
+        "86893908",
+        "35638031"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi 10 Lite 5G",
+    "codename": "monet",
+    "identifiers": {
+      "ro.product.model": "M2002J9G",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "monet",
+      "ro.product.name": "monet",
+      "ro.build.product": "monet"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/monet/monet:12/SKQ1.211006.001/V13.0.3.0.SJIMIXM:user/release-keys",
+      "ro.build.display.id": "SKQ1.211006.001",
+      "ro.build.version.release": "12",
+      "ro.build.version.sdk": "32"
+    },
+    "screen": {
+      "resolution": "1080x2340",
+      "width": 1080,
+      "height": 2340,
+      "dpi": 398,
+      "ratio": "19.5:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "sm6350",
+      "chipset": "Snapdragon 765G"
+    },
+    "imei": {
+      "tac": [
+        "86222904",
+        "86907304",
+        "35783531"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi 11 Lite 5G NE",
+    "codename": "lisa",
+    "identifiers": {
+      "ro.product.model": "2109119DG",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "lisa",
+      "ro.product.name": "lisa",
+      "ro.build.product": "lisa"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/lisa/lisa:13/TKQ1.221114.001/V14.0.4.0.TKОМIXM:user/release-keys",
+      "ro.build.display.id": "TKQ1.221114.001",
+      "ro.build.version.release": "13",
+      "ro.build.version.sdk": "33"
+    },
+    "screen": {
+      "resolution": "1080x2400",
+      "width": 1080,
+      "height": 2400,
+      "dpi": 395,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "sm6375",
+      "chipset": "Snapdragon 778G"
+    },
+    "imei": {
+      "tac": [
+        "86449105",
+        "86795705",
+        "35470131"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi 12 Lite",
+    "codename": "taoyao",
+    "identifiers": {
+      "ro.product.model": "2203129G",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "taoyao",
+      "ro.product.name": "taoyao",
+      "ro.build.product": "taoyao"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/taoyao/taoyao:13/TKQ1.221114.001/V14.0.3.0.TLIMIXM:user/release-keys",
+      "ro.build.display.id": "TKQ1.221114.001",
+      "ro.build.version.release": "13",
+      "ro.build.version.sdk": "33"
+    },
+    "screen": {
+      "resolution": "1080x2400",
+      "width": 1080,
+      "height": 2400,
+      "dpi": 402,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "sm6375",
+      "chipset": "Snapdragon 778G 5G"
+    },
+    "imei": {
+      "tac": [
+        "86826806",
+        "86294406",
+        "35842731"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi 12S",
+    "codename": "mayfly",
+    "identifiers": {
+      "ro.product.model": "2206123SC",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "mayfly",
+      "ro.product.name": "mayfly",
+      "ro.build.product": "mayfly"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/mayfly/mayfly:14/UKQ1.231003.002/V816.0.2.0.ULLCNXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1080x2400",
+      "width": 1080,
+      "height": 2400,
+      "dpi": 419,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "taro",
+      "chipset": "Snapdragon 8+ Gen 1"
+    },
+    "imei": {
+      "tac": [
+        "86953706",
+        "86436106",
+        "35915231"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi 12S Pro",
+    "codename": "unicorn",
+    "identifiers": {
+      "ro.product.model": "2206122SC",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "unicorn",
+      "ro.product.name": "unicorn",
+      "ro.build.product": "unicorn"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/unicorn/unicorn:14/UKQ1.231003.002/V816.0.3.0.ULACNXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1440x3200",
+      "width": 1440,
+      "height": 3200,
+      "dpi": 522,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "taro",
+      "chipset": "Snapdragon 8+ Gen 1"
+    },
+    "imei": {
+      "tac": [
+        "86954006",
+        "86436406",
+        "35915531"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi 13 Lite",
+    "codename": "ziyi",
+    "identifiers": {
+      "ro.product.model": "2210129SG",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "ziyi",
+      "ro.product.name": "ziyi",
+      "ro.build.product": "ziyi"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/ziyi/ziyi:14/UKQ1.231003.002/V816.0.3.0.UMEMIXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1080x2400",
+      "width": 1080,
+      "height": 2400,
+      "dpi": 402,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "taro",
+      "chipset": "Snapdragon 7 Gen 1"
+    },
+    "imei": {
+      "tac": [
+        "86156707",
+        "86398007",
+        "35207331"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi MIX 4",
+    "codename": "odin",
+    "identifiers": {
+      "ro.product.model": "2106118C",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "odin",
+      "ro.product.name": "odin",
+      "ro.build.product": "odin"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/odin/odin:13/TKQ1.221114.001/V14.0.6.0.TKMCNXM:user/release-keys",
+      "ro.build.display.id": "TKQ1.221114.001",
+      "ro.build.version.release": "13",
+      "ro.build.version.sdk": "33"
+    },
+    "screen": {
+      "resolution": "1080x2400",
+      "width": 1080,
+      "height": 2400,
+      "dpi": 386,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "lahaina",
+      "chipset": "Snapdragon 888+"
+    },
+    "imei": {
+      "tac": [
+        "86449205",
+        "86795805",
+        "35470231"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi MIX Fold 2",
+    "codename": "zizhan",
+    "identifiers": {
+      "ro.product.model": "22061218C",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "zizhan",
+      "ro.product.name": "zizhan",
+      "ro.build.product": "zizhan"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/zizhan/zizhan:14/UKQ1.231003.002/V816.0.2.0.ULWCNXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1914x2160",
+      "width": 1914,
+      "height": 2160,
+      "dpi": 369,
+      "ratio": "9:8"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "taro",
+      "chipset": "Snapdragon 8+ Gen 1"
+    },
+    "imei": {
+      "tac": [
+        "86954106",
+        "86436506",
+        "35915631"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi MIX Fold 3",
+    "codename": "babylon",
+    "identifiers": {
+      "ro.product.model": "2308CPXD0C",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "babylon",
+      "ro.product.name": "babylon",
+      "ro.build.product": "babylon"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/babylon/babylon:14/UKQ1.231003.002/V816.0.4.0.UMVCNXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1916x2160",
+      "width": 1916,
+      "height": 2160,
+      "dpi": 400,
+      "ratio": "9:8"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "kalama",
+      "chipset": "Snapdragon 8 Gen 2"
+    },
+    "imei": {
+      "tac": [
+        "86258807",
+        "86573507",
+        "35368331"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi Civi 2",
+    "codename": "ziyi",
+    "identifiers": {
+      "ro.product.model": "2209129SC",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "ziyi",
+      "ro.product.name": "ziyi_cn",
+      "ro.build.product": "ziyi"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/ziyi_cn/ziyi:14/UKQ1.231003.002/V816.0.3.0.UMECNXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1080x2400",
+      "width": 1080,
+      "height": 2400,
+      "dpi": 402,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "taro",
+      "chipset": "Snapdragon 7 Gen 1"
+    },
+    "imei": {
+      "tac": [
+        "86954206",
+        "86436606",
+        "35915731"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi Civi 3",
+    "codename": "yuechu",
+    "identifiers": {
+      "ro.product.model": "23046PN9BC",
+      "ro.product.brand": "Xiaomi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "yuechu",
+      "ro.product.name": "yuechu",
+      "ro.build.product": "yuechu"
+    },
+    "build": {
+      "ro.build.fingerprint": "Xiaomi/yuechu/yuechu:14/UKQ1.231003.002/V816.0.4.0.UMQCNXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1200x2712",
+      "width": 1200,
+      "height": 2712,
+      "dpi": 446,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "mt6985",
+      "ro.board.platform": "mt6985",
+      "chipset": "Dimensity 8200 Ultra"
+    },
+    "imei": {
+      "tac": [
+        "86258907",
+        "86573607",
+        "35368431"
+      ]
+    }
+  },
+  {
+    "name": "Redmi K40 Gaming",
+    "codename": "ares",
+    "identifiers": {
+      "ro.product.model": "M2104K10C",
+      "ro.product.brand": "Redmi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "ares",
+      "ro.product.name": "ares",
+      "ro.build.product": "ares"
+    },
+    "build": {
+      "ro.build.fingerprint": "Redmi/ares/ares:13/TP1A.220624.014/V14.0.2.0.TKJCNXM:user/release-keys",
+      "ro.build.display.id": "TP1A.220624.014",
+      "ro.build.version.release": "13",
+      "ro.build.version.sdk": "33"
+    },
+    "screen": {
+      "resolution": "1080x2400",
+      "width": 1080,
+      "height": 2400,
+      "dpi": 395,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "mt6893",
+      "ro.board.platform": "mt6893",
+      "chipset": "Dimensity 1200"
+    },
+    "imei": {
+      "tac": [
+        "86449305",
+        "86795905",
+        "35470331"
+      ]
+    }
+  },
+  {
+    "name": "Redmi K50 Gaming",
+    "codename": "ingres",
+    "identifiers": {
+      "ro.product.model": "21121210C",
+      "ro.product.brand": "Redmi",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "ingres",
+      "ro.product.name": "ingres",
+      "ro.build.product": "ingres"
+    },
+    "build": {
+      "ro.build.fingerprint": "Redmi/ingres/ingres:14/UKQ1.231003.002/V816.0.3.0.ULJCNXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1080x2400",
+      "width": 1080,
+      "height": 2400,
+      "dpi": 395,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "taro",
+      "chipset": "Snapdragon 8 Gen 1"
+    },
+    "imei": {
+      "tac": [
+        "86826906",
+        "86294506",
+        "35842831"
+      ]
+    }
+  },
+  {
+    "name": "POCO X5 Pro 5G",
+    "codename": "redwood",
+    "identifiers": {
+      "ro.product.model": "22101320G",
+      "ro.product.brand": "POCO",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "redwood",
+      "ro.product.name": "redwood_global",
+      "ro.build.product": "redwood"
+    },
+    "build": {
+      "ro.build.fingerprint": "POCO/redwood_global/redwood:14/UKQ1.231003.002/V816.0.3.0.UMSMIXM:user/release-keys",
+      "ro.build.display.id": "UKQ1.231003.002",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1080x2400",
+      "width": 1080,
+      "height": 2400,
+      "dpi": 395,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "qcom",
+      "ro.board.platform": "sm6375",
+      "chipset": "Snapdragon 778G"
+    },
+    "imei": {
+      "tac": [
+        "86157007",
+        "86398307",
+        "35207631"
+      ]
+    }
+  },
+  {
+    "name": "POCO X6 Pro 5G",
+    "codename": "duchamp",
+    "identifiers": {
+      "ro.product.model": "24031PN54G",
+      "ro.product.brand": "POCO",
+      "ro.product.manufacturer": "Xiaomi",
+      "ro.product.device": "duchamp",
+      "ro.product.name": "duchamp_global",
+      "ro.build.product": "duchamp"
+    },
+    "build": {
+      "ro.build.fingerprint": "POCO/duchamp_global/duchamp:14/UP1A.231005.007/V816.0.3.0.UNSMIXM:user/release-keys",
+      "ro.build.display.id": "UP1A.231005.007",
+      "ro.build.version.release": "14",
+      "ro.build.version.sdk": "34"
+    },
+    "screen": {
+      "resolution": "1220x2712",
+      "width": 1220,
+      "height": 2712,
+      "dpi": 446,
+      "ratio": "20:9"
+    },
+    "hardware": {
+      "ro.hardware": "mt6895",
+      "ro.board.platform": "mt6895",
+      "chipset": "Dimensity 8300 Ultra"
+    },
+    "imei": {
+      "tac": [
+        "86571508",
+        "86894008",
+        "35638131"
+      ]
+    }
+  }
+]

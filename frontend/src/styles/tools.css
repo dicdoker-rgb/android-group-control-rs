@@ -1,0 +1,399 @@
+/* ===== Tools Page: ADB, Files, APK, Logcat, Shell ===== */
+
+.adb-toolbox-head,
+.adb-toolbox-group {
+  display: grid;
+  gap: 10px;
+}
+
+.adb-toolbox-stack {
+  display: grid;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 18px;
+  border: 1px solid var(--stroke);
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.adb-toolbox-head > div,
+.adb-toolbox-group > div {
+  display: grid;
+  gap: 4px;
+}
+
+.adb-toolbox-head span {
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.adb-toolbox-groups,
+.adb-shell-output {
+  display: grid;
+  gap: 12px;
+}
+
+.adb-inspection-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.adb-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 8px;
+}
+
+.adb-summary-grid.compact {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.adb-summary-chip {
+  display: grid;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  border: 1px solid var(--stroke);
+  background: rgba(245, 248, 255, 0.9);
+}
+
+.adb-summary-chip span {
+  color: var(--muted);
+  font-size: 0.74rem;
+}
+
+.adb-summary-chip strong {
+  font-size: 0.95rem;
+}
+
+.adb-inspection-grid,
+.adb-shell-multi {
+  display: grid;
+  gap: 10px;
+}
+
+.adb-inspection-table-wrap {
+  overflow: auto;
+  border: 1px solid var(--stroke);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.adb-inspection-table {
+  width: 100%;
+  min-width: 980px;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.adb-inspection-table th,
+.adb-inspection-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(28, 45, 77, 0.08);
+  text-align: left;
+  vertical-align: top;
+}
+
+.adb-inspection-table th {
+  position: sticky;
+  top: 0;
+  background: rgba(242, 246, 255, 0.98);
+  color: var(--muted);
+  font-weight: 700;
+  z-index: 1;
+}
+
+.adb-inspection-table td:first-child,
+.adb-inspection-table th:first-child {
+  font-family: "SFMono-Regular", "Menlo", monospace;
+}
+
+.adb-inspection-card {
+  padding: 12px;
+  border-radius: 18px;
+  border: 1px solid var(--stroke);
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.adb-inspection-card.ok {
+  border-color: rgba(15, 155, 104, 0.18);
+}
+
+.adb-inspection-card.error {
+  border-color: rgba(209, 93, 54, 0.22);
+}
+
+.adb-inspection-fields {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.adb-inspection-field {
+  display: grid;
+  gap: 3px;
+}
+
+.adb-inspection-field span {
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.adb-inspection-field strong {
+  font-size: 0.88rem;
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+/* Logcat */
+.adb-logcat-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+.adb-logcat-chip {
+  display: grid;
+  gap: 2px;
+  text-align: left;
+  padding: 12px;
+  border-radius: 18px;
+  border: 1px solid var(--stroke);
+  background: rgba(255, 255, 255, 0.98);
+  color: var(--ink);
+}
+
+.adb-logcat-chip strong,
+.adb-logcat-chip em,
+.adb-logcat-chip span {
+  display: block;
+}
+
+.adb-logcat-chip span,
+.adb-logcat-chip em {
+  color: var(--muted);
+  font-style: normal;
+  font-size: 0.78rem;
+}
+
+.adb-logcat-chip.active {
+  border-color: rgba(57, 106, 255, 0.38);
+  box-shadow: 0 12px 28px rgba(57, 106, 255, 0.12);
+}
+
+.adb-logcat-chip.error {
+  border-color: rgba(209, 93, 54, 0.24);
+}
+
+.adb-logcat-chip.warn {
+  border-color: rgba(215, 142, 14, 0.24);
+}
+
+.adb-logcat-chip.info {
+  border-color: rgba(57, 106, 255, 0.24);
+}
+
+/* APK */
+.apk-dropzone {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+  padding: 18px;
+  border-radius: 20px;
+  border: 1.5px dashed rgba(57, 106, 255, 0.28);
+  background: linear-gradient(180deg, rgba(241, 246, 255, 0.95), rgba(255, 255, 255, 0.98));
+  text-align: left;
+  color: var(--text);
+}
+
+.apk-dropzone.dragging {
+  border-color: rgba(57, 106, 255, 0.62);
+  box-shadow: 0 16px 40px rgba(57, 106, 255, 0.12);
+}
+
+.apk-dropzone strong {
+  font-size: 0.98rem;
+}
+
+.apk-dropzone span {
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.apk-ready-card {
+  display: grid;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 18px;
+  border: 1px solid var(--stroke);
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.apk-ready-card strong,
+.apk-ready-card span {
+  display: block;
+}
+
+.apk-ready-card span {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+.apk-history-list {
+  display: grid;
+  gap: 10px;
+}
+
+.apk-queue-list,
+.apk-install-run-list {
+  display: grid;
+  gap: 10px;
+}
+
+.apk-queue-card {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 18px;
+  border: 1px solid var(--stroke);
+  background: linear-gradient(180deg, rgba(241, 246, 255, 0.95), rgba(255, 255, 255, 0.98));
+}
+
+.apk-queue-index {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: rgba(57, 106, 255, 0.12);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.86rem;
+}
+
+.apk-queue-copy strong,
+.apk-queue-copy span {
+  display: block;
+}
+
+.apk-queue-copy span {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.apk-queue-actions,
+.apk-history-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.apk-history-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 18px;
+  border: 1px solid var(--stroke);
+  background: rgba(255, 255, 255, 0.98);
+  text-align: left;
+}
+
+.apk-history-card.active {
+  border-color: rgba(57, 106, 255, 0.38);
+}
+
+/* File Browser */
+.browser-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.browser-list {
+  display: grid;
+  gap: 10px;
+}
+
+.browser-entry {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 18px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid var(--stroke);
+  box-shadow: none;
+  color: var(--ink);
+}
+
+.browser-entry.dir {
+  background: linear-gradient(180deg, rgba(238, 245, 255, 0.98), rgba(255, 255, 255, 0.98));
+}
+
+.browser-entry strong,
+.browser-entry span,
+.browser-entry em {
+  display: block;
+}
+
+.browser-entry span,
+.browser-entry em {
+  color: var(--muted);
+  font-style: normal;
+  font-size: 0.78rem;
+}
+
+/* Log items */
+.log-item {
+  padding: 12px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid var(--stroke);
+}
+
+.log-item.ok {
+  border-color: rgba(15, 155, 104, 0.18);
+}
+
+.log-item.error {
+  border-color: rgba(209, 93, 54, 0.22);
+}
+
+.log-item.warn {
+  border-color: rgba(215, 142, 14, 0.22);
+  background: linear-gradient(180deg, rgba(255, 251, 243, 0.98), rgba(255, 255, 255, 0.98));
+}
+
+.log-item.info {
+  border-color: rgba(57, 106, 255, 0.2);
+}
+
+.segmented.compact {
+  grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+}
+
+@media (max-width: 1024px) {
+  .apk-queue-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .apk-queue-actions,
+  .apk-history-actions {
+    justify-content: flex-start;
+  }
+}
