@@ -287,23 +287,88 @@ pub fn batch_vm_action(
 // Anti-detection: property injection after boot
 // ---------------------------------------------------------------------------
 
-/// Inject anti-detection properties into a running container via resetprop.
+/// Inject comprehensive anti-detection properties into a running container.
+/// Covers: device identity, hardware platform, security, Docker traces,
+/// thermal zones, cpuinfo, network interface, SIM/carrier.
 /// Must be called after sys.boot_completed=1 and Magisk is active.
 pub fn inject_anti_detection_props(config: &HostConfig, name: &str) -> Result<String, String> {
     let script = format!(
         r#"docker exec {name} sh -c '
-/sbin/resetprop ro.board.platform kona
-/sbin/resetprop ro.boot.hardware qcom
-/sbin/resetprop ro.hardware.chipname kona
-/sbin/resetprop ro.debuggable 0
-/sbin/resetprop ro.secure 1
-/sbin/resetprop ro.build.type user
-/sbin/resetprop ro.build.fingerprint "Xiaomi/umi/umi:13/TKQ1.221114.001/V14.0.4.0.TJBCNXM:user/release-keys"
-/sbin/resetprop ro.vendor.build.fingerprint "Xiaomi/umi/umi:13/TKQ1.221114.001/V14.0.4.0.TJBCNXM:user/release-keys"
-/sbin/resetprop ro.system.build.fingerprint "Xiaomi/umi/umi:13/TKQ1.221114.001/V14.0.4.0.TJBCNXM:user/release-keys"
-/sbin/resetprop --delete ro.lineage.device
-/sbin/resetprop --delete ro.lineage.version
-rm -f /.dockerenv
+R=/sbin/resetprop
+
+# === Device Identity (all partitions) ===
+BRAND=Xiaomi; MODEL=M2001J2C; DEVICE=umi
+FP="Xiaomi/umi/umi:13/TKQ1.221114.001/V14.0.4.0.TJBCNXM:user/release-keys"
+for P in "" ".odm" ".product" ".system" ".system_ext" ".vendor" ".vendor_dlkm"; do
+    $R "ro.product${{P}}.brand" "$BRAND" 2>/dev/null
+    $R "ro.product${{P}}.model" "$MODEL" 2>/dev/null
+    $R "ro.product${{P}}.device" "$DEVICE" 2>/dev/null
+    $R "ro.product${{P}}.manufacturer" "$BRAND" 2>/dev/null
+    $R "ro.product${{P}}.name" "$DEVICE" 2>/dev/null
+done
+
+# === Fingerprint (all partitions) ===
+for k in ro.build.fingerprint ro.bootimage.build.fingerprint ro.vendor.build.fingerprint ro.system.build.fingerprint ro.product.build.fingerprint; do
+    $R "$k" "$FP" 2>/dev/null
+done
+
+# === Hardware Platform (kona = Snapdragon 865) ===
+$R ro.board.platform kona
+$R ro.boot.hardware qcom
+$R ro.hardware qcom
+$R ro.hardware.chipname sm8250
+$R ro.hardware.egl adreno
+$R ro.hardware.vulkan adreno
+
+# === Security Properties ===
+$R ro.boot.selinux enforcing
+$R ro.debuggable 0
+$R ro.secure 1
+$R ro.build.type user
+$R ro.boot.verifiedbootstate green
+$R ro.boot.vbmeta.device_state locked
+
+# === Clean Lineage/Redroid Traces ===
+$R --delete ro.lineage.device 2>/dev/null
+$R --delete ro.lineage.version 2>/dev/null
+$R --delete ro.lineage.build.version 2>/dev/null
+$R --delete ro.lineage.releasetype 2>/dev/null
+$R --delete ro.modversion 2>/dev/null
+
+# === Docker Traces Cleanup ===
+echo > /data/empty_file
+mount -o bind /data/empty_file /.dockerenv 2>/dev/null
+echo "0::/init.scope" > /data/fake_cgroup
+mount -o bind /data/fake_cgroup /proc/1/cgroup 2>/dev/null
+
+# === Fake cpuinfo (Qualcomm SDM710) ===
+NCPU=$(nproc)
+echo "" > /data/fake_cpuinfo
+for i in $(seq 0 $((NCPU-1))); do
+    printf "processor\t: %d\nBogoMIPS\t: 38.40\nFeatures\t: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm lrcpc dcpop asimddp\nCPU implementer\t: 0x51\nCPU architecture: 8\nCPU variant\t: 0xa\nCPU part\t: 0x801\nCPU revision\t: 4\n\n" "$i" >> /data/fake_cpuinfo
+done
+printf "Hardware\t: Qualcomm Technologies, Inc SDM710\nRevision\t: 0000\nSerial\t\t: 0000000000000000\n" >> /data/fake_cpuinfo
+mount -o bind /data/fake_cpuinfo /proc/cpuinfo 2>/dev/null
+
+# === Thermal Zone Rename ===
+for tz in /sys/class/thermal/thermal_zone*; do
+    t=$(cat $tz/type 2>/dev/null)
+    base=$(basename $tz)
+    case "$t" in
+        soc-thermal) echo tsens_tz_sensor0 > /data/fake_${{base}} && mount -o bind /data/fake_${{base}} $tz/type 2>/dev/null;;
+        bigcore*) echo tsens_tz_sensor1 > /data/fake_${{base}} && mount -o bind /data/fake_${{base}} $tz/type 2>/dev/null;;
+        littlecore*) echo tsens_tz_sensor2 > /data/fake_${{base}} && mount -o bind /data/fake_${{base}} $tz/type 2>/dev/null;;
+        gpu*thermal) echo tsens_tz_sensor3 > /data/fake_${{base}} && mount -o bind /data/fake_${{base}} $tz/type 2>/dev/null;;
+        npu*thermal) echo tsens_tz_sensor4 > /data/fake_${{base}} && mount -o bind /data/fake_${{base}} $tz/type 2>/dev/null;;
+    esac
+done
+
+# === Network Rename (eth0 -> wlan0) ===
+ip link set eth0 down 2>/dev/null
+ip link set eth0 name wlan0 2>/dev/null
+ip link set wlan0 up 2>/dev/null
+
+# === SIM / Carrier / Signal ===
 setprop gsm.network.type NR
 setprop gsm.sim.state READY,READY
 setprop gsm.sim.operator.alpha "中国移动"
@@ -314,6 +379,12 @@ setprop persist.radio.multisim.config dsds
 setprop gsm.version.baseband "4.0.2.c8-00039-0710_0125_f484f49"
 setprop net.dns1 223.5.5.5
 setprop net.dns2 223.6.6.6
+
+# === Battery Simulation ===
+LEVEL=$((60 + RANDOM % 35))
+dumpsys battery set level $LEVEL 2>/dev/null
+dumpsys battery set status 2 2>/dev/null
+
 echo PROVISION_OK
 '"#,
         name = name
