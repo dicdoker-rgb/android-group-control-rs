@@ -35,7 +35,7 @@ Ubuntu 22.04
 
 ---
 
-## 改动清单（共 12 项）
+## 改动清单（共 19 项）
 
 ### 1. GL 字符串欺骗（最关键）
 
@@ -254,6 +254,101 @@ export BUILD_DATETIME=1694747538  # 2023-09-15
 export BUILD_NUMBER=V14.0.4.0.TJBCNXM
 ```
 
+### 13. 默认中文 + 中国区域设置
+
+**device.mk**:
+```makefile
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.language=zh \
+    persist.sys.country=CN \
+    persist.sys.locale=zh-CN \
+    persist.sys.timezone=Asia/Shanghai \
+    ro.product.locale=zh-CN \
+    ro.setupwizard.mode=DISABLED
+
+# 默认中文输入法（编译进系统）
+PRODUCT_PACKAGES += LatinIME
+```
+
+**overlay/frameworks/base/core/res/res/values/config.xml**:
+```xml
+<!-- 默认语言 -->
+<string name="default_locale">zh_CN</string>
+```
+
+**overlay/frameworks/base/packages/SettingsProvider/res/values/defaults.xml**:
+```xml
+<!-- 跳过开机向导 -->
+<bool name="def_device_provisioned">true</bool>
+<integer name="def_screen_off_timeout">300000</integer>
+```
+
+这样容器启动即中文界面，不需要手动设置语言。
+
+### 14. 跳过开机向导 + 默认壁纸
+
+```makefile
+# device.mk
+# 跳过 SetupWizard
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.setupwizard.mode=OPTIONAL \
+    ro.opa.eligible_device=true
+
+# 预置小米风格壁纸
+PRODUCT_COPY_FILES += \
+    device/redroid/wallpaper/default_wallpaper.jpg:system/media/wallpaper/default_wallpaper.jpg
+```
+
+### 15. 预装搜狗输入法 APK
+
+```makefile
+# 编译进 /system/app/ (不可卸载)
+PRODUCT_PACKAGES += SogouInput
+# 或通过 provision.sh 从共享卷安装(可卸载)
+```
+
+考虑到群控场景用 provision 安装更灵活（不同容器可装不同输入法）。
+
+### 16. 网络接口名称
+
+ROM 层面无法解决（Docker bridge 创建的 eth0），但在 provision.sh 中:
+- 创建 dummy wlan0
+- 设置 wifi.interface=wlan0
+- 后续用 macvlan 网络彻底解决
+
+### 17. Magisk Kitsune 预装 + Zygisk 启用
+
+```bash
+# 在 system 分区预置 Magisk
+# init.rc 中添加 Magisk daemon 自启
+# /data/adb/magisk/config 写入 ZYGISK=true
+# 预装模块:
+#   - Shamiko (root 隐藏)
+#   - HideMyApplist (应用列表隐藏)
+#   - PlayIntegrityFix (Play Integrity 通过)
+```
+
+### 18. /proc/cmdline 清理
+
+内核启动参数可能包含 Docker/Redroid 提示:
+```
+androidboot.redroid_gpu_mode=mali → 不传或用内部属性替代
+androidboot.redroid_fps=60 → 改为通用参数名
+```
+
+在 ROM 的 init.rc 中读取这些参数后立即清理对应的 ro.boot.* 属性。
+
+### 19. ADB 默认关闭 + USB 调试不可见
+
+```makefile
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mtp \
+    ro.adb.secure=1 \
+    persist.service.adb.enable=0
+```
+
+provision.sh 中通过 docker exec 的 TCP ADB (5555) 操作，不暴露 ADB 状态给检测。
+
 ---
 
 ## 编译流程
@@ -353,6 +448,11 @@ docker save redroid-custom:v4.0-anti-detect | \
 | /system 可写 | 否 | **LD_PRELOAD 编译时写入** |
 | provision | 需 docker exec | **开机自动执行** |
 | 编译日期 | 2026年 | **2023年9月** |
+
+| 中文/区域 | 需手动设 | **默认zh-CN** |
+| 开机向导 | 需手动跳 | **自动跳过** |
+| /proc/cmdline | redroid参数 | **清理** |
+| ADB | 对外可见 | **默认关闭** |
 
 抖音 Badger SDK 扫描预期: 0 失败项, 0 验证码
 
