@@ -1,48 +1,82 @@
 /*
- * /proc/mounts filter via kretprobe on show_vfsmnt
- * Uses kretprobe per-instance data to correctly pass seq_file pointer
- * from entry to return handler.
- *
- * Bug fix: Original kprobe version read regs->regs[0] in post_handler,
- * which on ARM64 is the return value (0), not the original seq_file arg.
+ * /proc/mounts filter via kretprobe on show_vfsmnt/show_mountinfo
+ * v4: Only filters for container processes, NOT for Docker runtime.
+ *     Uses dual check: mount namespace + process name exclusion.
+ *     Docker/runc processes always see unfiltered mounts.
  */
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/kprobes.h>
 #include <linux/seq_file.h>
 #include <linux/string.h>
+#include <linux/nsproxy.h>
+#include <linux/mnt_namespace.h>
+#include <linux/sched.h>
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("groupcontrol");
-MODULE_DESCRIPTION("Filter overlay/docker from /proc/mounts via kretprobe");
+MODULE_DESCRIPTION("Filter overlay/docker from /proc/mounts for containers only v4");
 
-/* Per-instance data saved between entry and return */
+static struct mnt_namespace *init_mnt_ns;
+
 struct mount_filter_data {
     struct seq_file *m;
     size_t old_count;
+    int skip;
 };
 
-/* Entry handler: save seq_file pointer and current position */
+/* Check if this process should be exempt from filtering */
+static inline int should_skip_filter(void)
+{
+    const char *comm = current->comm;
+
+    /* Host processes (init mount namespace) - never filter */
+    if (!current->nsproxy)
+        return 1;
+    if (current->nsproxy->mnt_ns == init_mnt_ns)
+        return 1;
+
+    /* Docker/container runtime processes - never filter even in new ns */
+    if (strncmp(comm, "runc", 4) == 0)
+        return 1;
+    if (strstr(comm, "docker") != NULL)
+        return 1;
+    if (strstr(comm, "containerd") != NULL)
+        return 1;
+    if (strncmp(comm, "exe", 3) == 0)  /* runc uses "exe" as comm sometimes */
+        return 1;
+
+    return 0;
+}
+
 static int entry_handler(struct kretprobe_instance *ri, struct pt_regs *regs)
 {
     struct mount_filter_data *data = (struct mount_filter_data *)ri->data;
     struct seq_file *m = (struct seq_file *)regs->regs[0];
 
+    if (should_skip_filter()) {
+        data->skip = 1;
+        return 0;
+    }
+
+    data->skip = 0;
     data->m = m;
     data->old_count = m ? m->count : 0;
-
     return 0;
 }
 
-/* Return handler: check newly written data, truncate if overlay/docker */
 static int ret_handler(struct kretprobe_instance *ri, struct pt_regs *regs)
 {
     struct mount_filter_data *data = (struct mount_filter_data *)ri->data;
-    struct seq_file *m = data->m;
-    size_t old_count = data->old_count;
-    size_t new_count;
+    struct seq_file *m;
+    size_t old_count, new_count, new_len;
     char *new_data;
-    size_t new_len;
+
+    if (data->skip)
+        return 0;
+
+    m = data->m;
+    old_count = data->old_count;
 
     if (!m || !m->buf)
         return 0;
@@ -54,14 +88,12 @@ static int ret_handler(struct kretprobe_instance *ri, struct pt_regs *regs)
     new_data = m->buf + old_count;
     new_len = new_count - old_count;
 
-    /* Filter mount entries containing these keywords */
     if (strnstr(new_data, "overlay", new_len) ||
         strnstr(new_data, "docker", new_len) ||
         strnstr(new_data, "magisk", new_len) ||
         strnstr(new_data, "lxcfs", new_len) ||
         strnstr(new_data, "containers", new_len) ||
         strnstr(new_data, "mmcblk", new_len)) {
-        /* Undo: truncate seq_file back to old position */
         m->count = old_count;
     }
 
@@ -89,28 +121,29 @@ static int __init filter_init(void)
 {
     int ret;
 
-    /* Hook show_vfsmnt (used by /proc/mounts) */
+    init_mnt_ns = current->nsproxy->mnt_ns;
+    pr_info("mounts_filter_v4: init mnt_ns=%px\n", init_mnt_ns);
+
     krp_vfsmnt.kp.symbol_name = "show_vfsmnt";
     ret = register_kretprobe(&krp_vfsmnt);
     if (ret < 0) {
-        pr_warn("mounts_filter_v2: show_vfsmnt kretprobe failed: %d\n", ret);
+        pr_warn("mounts_filter_v4: show_vfsmnt failed: %d\n", ret);
     } else {
         vfsmnt_registered = 1;
-        pr_info("mounts_filter_v2: hooked show_vfsmnt\n");
+        pr_info("mounts_filter_v4: hooked show_vfsmnt\n");
     }
 
-    /* Hook show_mountinfo (used by /proc/self/mountinfo) */
     krp_mountinfo.kp.symbol_name = "show_mountinfo";
     ret = register_kretprobe(&krp_mountinfo);
     if (ret < 0) {
-        pr_warn("mounts_filter_v2: show_mountinfo kretprobe failed: %d\n", ret);
+        pr_warn("mounts_filter_v4: show_mountinfo failed: %d\n", ret);
     } else {
         mountinfo_registered = 1;
-        pr_info("mounts_filter_v2: hooked show_mountinfo\n");
+        pr_info("mounts_filter_v4: hooked show_mountinfo\n");
     }
 
     if (!vfsmnt_registered && !mountinfo_registered) {
-        pr_err("mounts_filter_v2: both hooks failed, giving up\n");
+        pr_err("mounts_filter_v4: both hooks failed\n");
         return -ENOENT;
     }
 
@@ -123,7 +156,7 @@ static void __exit filter_exit(void)
         unregister_kretprobe(&krp_vfsmnt);
     if (mountinfo_registered)
         unregister_kretprobe(&krp_mountinfo);
-    pr_info("mounts_filter_v2: unloaded\n");
+    pr_info("mounts_filter_v4: unloaded\n");
 }
 
 module_init(filter_init);

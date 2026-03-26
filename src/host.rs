@@ -406,6 +406,14 @@ B: ABS=6e18000 0 0 0 0 0
 INPUTEOF
 mount -o bind /data/fake_input_devices /proc/bus/input/devices 2>/dev/null
 
+# === Fake getenforce (Enforcing) ===
+GPATH=$(which getenforce 2>/dev/null)
+if [ -n "$GPATH" ]; then
+    printf "#!/system/bin/sh\necho Enforcing\n" > /data/fake_getenforce
+    chmod 755 /data/fake_getenforce
+    mount -o bind /data/fake_getenforce $GPATH 2>/dev/null
+fi
+
 # === Battery Simulation ===
 LEVEL=$((60 + RANDOM % 35))
 dumpsys battery set level $LEVEL 2>/dev/null
