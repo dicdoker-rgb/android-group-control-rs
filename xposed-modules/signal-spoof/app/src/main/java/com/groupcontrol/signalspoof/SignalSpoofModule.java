@@ -97,8 +97,9 @@ public class SignalSpoofModule implements IXposedHookLoadPackage {
                             try {
                                 List<CellInfo> fakeCellInfoList = new ArrayList<>();
 
-                                // Create a CellInfoLte via reflection
-                                CellInfoLte cellInfoLte = new CellInfoLte();
+                                // Create a CellInfoLte via reflection (constructor not public)
+                                Class<?> cellInfoLteClass = Class.forName("android.telephony.CellInfoLte");
+                                CellInfoLte cellInfoLte = (CellInfoLte) cellInfoLteClass.getDeclaredConstructor().newInstance();
 
                                 // Random signal strength between -85 and -105 dBm
                                 int rsrp = -(85 + random.nextInt(21)); // -85 to -105
@@ -130,7 +131,7 @@ public class SignalSpoofModule implements IXposedHookLoadPackage {
                                 XposedHelpers.setIntField(cellIdentity, "mTac", 10000 + random.nextInt(50000));
                                 XposedHelpers.setIntField(cellIdentity, "mEarfcn", 1300 + random.nextInt(200));
 
-                                cellInfoLte.setRegistered(true);
+                                XposedHelpers.callMethod(cellInfoLte, "setRegistered", true);
 
                                 fakeCellInfoList.add(cellInfoLte);
                                 param.setResult(fakeCellInfoList);

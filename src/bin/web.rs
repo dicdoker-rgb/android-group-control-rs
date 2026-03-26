@@ -30,7 +30,7 @@ use android_group_control_rs::bezier;
 use android_group_control_rs::host::{self, HostConfig};
 use android_group_control_rs::host_monitor::{HostMonitor, HostStats};
 use android_group_control_rs::preview::{PreviewHub, PreviewPriority};
-use android_group_control_rs::scrcpy::ScrcpyManager;
+use android_group_control_rs::scrcpy::{ScrcpyManager, GroupController, ControlEvent};
 use android_group_control_rs::storage::{
     self, AccountBinding, AdbCommandPreset, ApkMetadataCacheEntry, DeviceGroup, DeviceProfile,
     MaterialAsset, QueueItem, QuickPhrase, RecordingStep, RecordingTemplate, TaskRunRecord,
@@ -562,11 +562,17 @@ async fn main() {
         .route("/api/hosts/{id}/vms/{name}/restart", post(restart_vm))
         .route("/api/hosts/{id}/vms/{name}", delete(delete_vm_handler))
         .route("/api/hosts/{id}/vms/batch", post(batch_vm_action_handler))
+        .route("/api/hosts/{id}/rotate", post(rotate_vms_handler))
+        .route("/api/hosts/{id}/vms/{name}/provision", post(provision_vm_handler))
+        .route("/api/profiles/stats", get(profile_stats_handler))
+        .route("/api/profiles/generate", post(generate_profiles_handler))
         .route("/api/hosts/{id}/stats", get(get_host_stats))
         .route("/api/hosts/{id}/stats/stream", get(stream_host_stats))
         .route("/api/interactive/sync", get(ws_interactive_sync))
         .route("/api/interactive/{serial}", get(ws_interactive))
         .route("/api/scrcpy/{serial}", get(ws_scrcpy))
+        .route("/api/scrcpy/{serial}/fps", get(get_scrcpy_fps))
+        .route("/api/scrcpy/group-control", post(group_control))
         .layer(
             CorsLayer::new()
                 .allow_origin([
@@ -3098,6 +3104,79 @@ async fn batch_vm_action_handler(
     .await
 }
 
+// ---------------------------------------------------------------------------
+// Rotate (one-click new device) + Provision + Profile management
+// ---------------------------------------------------------------------------
+
+async fn rotate_vms_handler(
+    State(state): State<Arc<AppState>>,
+    Path(id): Path<String>,
+    Json(body): Json<Value>,
+) -> Result<Json<Value>, ApiError> {
+    let hosts = host::load_hosts(&state.base_dir);
+    let config = hosts.iter().find(|h| h.id == id)
+        .ok_or_else(|| ApiError::bad_request(format!("Host {id} not found")))?;
+    let count = body.get("count").and_then(|v| v.as_u64()).unwrap_or(1) as usize;
+
+    // Rotate: delete all VMs, recreate with fresh profiles
+    let existing = host::list_vms(config).unwrap_or_default();
+    for vm in &existing {
+        let _ = host::delete_vm(config, &vm.name, true);
+    }
+
+    let created = host::create_vms_v2(config, count).map_err(ApiError::bad_request)?;
+
+    // Provision each (async in background)
+    for name in &created {
+        let _ = host::wait_and_provision(config, name, 120);
+    }
+
+    Ok(Json(serde_json::json!({
+        "rotated": created.len(),
+        "containers": created,
+    })))
+}
+
+async fn provision_vm_handler(
+    State(state): State<Arc<AppState>>,
+    Path((id, name)): Path<(String, String)>,
+) -> Result<Json<Value>, ApiError> {
+    let hosts = host::load_hosts(&state.base_dir);
+    let config = hosts.iter().find(|h| h.id == id)
+        .ok_or_else(|| ApiError::bad_request(format!("Host {id} not found")))?;
+
+    let result = host::inject_anti_detection_props(config, &name).map_err(ApiError::bad_request)?;
+    Ok(Json(serde_json::json!({ "status": "provisioned", "output": result })))
+}
+
+async fn profile_stats_handler() -> Json<Value> {
+    let count = |dir: &str| -> usize {
+        std::fs::read_dir(format!("/root/profile_pool/{dir}"))
+            .map(|d| d.count())
+            .unwrap_or(0)
+    };
+    Json(serde_json::json!({
+        "available": count("available"),
+        "active": count("active"),
+        "burned": count("burned"),
+    }))
+}
+
+async fn generate_profiles_handler(
+    Json(body): Json<Value>,
+) -> Result<Json<Value>, ApiError> {
+    let count = body.get("count").and_then(|v| v.as_u64()).unwrap_or(10);
+    let output = std::process::Command::new("python3")
+        .args(["/root/profile_pool/generator.py", &count.to_string()])
+        .output()
+        .map_err(|e| ApiError::bad_request(format!("Generator failed: {e}")))?;
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    Ok(Json(serde_json::json!({
+        "generated": count,
+        "output": stdout.trim(),
+    })))
+}
+
 async fn get_host_stats(
     State(state): State<Arc<AppState>>,
     Path(id): Path<String>,
@@ -3469,6 +3548,35 @@ async fn handle_scrcpy_session(socket: WebSocket, serial: String, state: Arc<App
                         let text = payload.get("text").and_then(Value::as_str).unwrap_or("");
                         s.inject_text(text)
                     }
+                    "scroll" => {
+                        let x = payload.get("x").and_then(Value::as_i64).unwrap_or(0) as i32;
+                        let y = payload.get("y").and_then(Value::as_i64).unwrap_or(0) as i32;
+                        let sx = payload.get("scrollX").and_then(Value::as_i64).unwrap_or(0) as i32;
+                        let sy = payload.get("scrollY").and_then(Value::as_i64).unwrap_or(0) as i32;
+                        let (w, h) = (s.width, s.height);
+                        s.inject_scroll(x, y, w, h, sx, sy)
+                    }
+                    "clipboard" => {
+                        let text = payload.get("text").and_then(Value::as_str).unwrap_or("");
+                        let paste = payload.get("paste").and_then(Value::as_bool).unwrap_or(true);
+                        s.set_clipboard(text, paste)
+                    }
+                    "swipe" => {
+                        let x1 = payload.get("x1").and_then(Value::as_i64).unwrap_or(0) as i32;
+                        let y1 = payload.get("y1").and_then(Value::as_i64).unwrap_or(0) as i32;
+                        let x2 = payload.get("x2").and_then(Value::as_i64).unwrap_or(0) as i32;
+                        let y2 = payload.get("y2").and_then(Value::as_i64).unwrap_or(0) as i32;
+                        let steps = payload.get("steps").and_then(Value::as_u64).unwrap_or(20) as u32;
+                        s.swipe(x1, y1, x2, y2, steps)
+                    }
+                    "back" => s.press_back(),
+                    "home" => s.press_home(),
+                    "recents" => s.press_recents(),
+                    "rotate" => s.rotate_device(),
+                    "screen_power" => {
+                        let mode = payload.get("mode").and_then(Value::as_u64).unwrap_or(2) as u8;
+                        s.set_screen_power_mode(mode)
+                    }
                     _ => Ok(()),
                 }
             };
@@ -3486,4 +3594,123 @@ async fn handle_scrcpy_session(socket: WebSocket, serial: String, state: Arc<App
     }
 
     state.scrcpy.stop_session(&serial);
+}
+
+// ── FPS endpoint ───────────────────────────────────────────────────────
+
+async fn get_scrcpy_fps(
+    Path(serial): Path<String>,
+    State(state): State<Arc<AppState>>,
+) -> impl IntoResponse {
+    let serial = serial.trim().to_string();
+    if let Some(session) = state.scrcpy.get_session(&serial) {
+        if let Ok(s) = session.lock() {
+            let fps = s.fps_counter.fps();
+            return Json(serde_json::json!({
+                "serial": serial,
+                "fps": fps,
+                "width": s.width,
+                "height": s.height,
+                "codec_id": s.codec_id,
+            }))
+            .into_response();
+        }
+    }
+    (StatusCode::NOT_FOUND, Json(serde_json::json!({"error": "no active session"}))).into_response()
+}
+
+// ── Group control: fan-out single input to N devices ───────────────────
+
+#[derive(Deserialize)]
+struct GroupControlRequest {
+    serials: Vec<String>,
+    event: GroupControlEvent,
+}
+
+#[derive(Deserialize)]
+#[serde(tag = "type")]
+enum GroupControlEvent {
+    #[serde(rename = "tap")]
+    Tap { x: i32, y: i32 },
+    #[serde(rename = "touch")]
+    Touch { action: u8, x: i32, y: i32 },
+    #[serde(rename = "swipe")]
+    Swipe { x1: i32, y1: i32, x2: i32, y2: i32, #[serde(default = "default_steps")] steps: u32 },
+    #[serde(rename = "keyevent")]
+    KeyPress { keycode: u32 },
+    #[serde(rename = "text")]
+    Text { text: String },
+    #[serde(rename = "scroll")]
+    Scroll { x: i32, y: i32, #[serde(rename = "scrollX")] scroll_x: i32, #[serde(rename = "scrollY")] scroll_y: i32 },
+    #[serde(rename = "clipboard")]
+    SetClipboard { text: String, #[serde(default = "default_true")] paste: bool },
+    #[serde(rename = "back")]
+    Back,
+    #[serde(rename = "home")]
+    Home,
+    #[serde(rename = "recents")]
+    Recents,
+    #[serde(rename = "rotate")]
+    RotateDevice,
+    #[serde(rename = "screen_power")]
+    SetScreenPower { #[serde(default = "default_screen_normal")] mode: u8 },
+}
+
+fn default_steps() -> u32 { 20 }
+fn default_true() -> bool { true }
+fn default_screen_normal() -> u8 { 2 }
+
+impl From<&GroupControlEvent> for ControlEvent {
+    fn from(e: &GroupControlEvent) -> Self {
+        match e {
+            GroupControlEvent::Tap { x, y } => ControlEvent::Tap { x: *x, y: *y },
+            GroupControlEvent::Touch { action, x, y } => ControlEvent::Touch { action: *action, x: *x, y: *y },
+            GroupControlEvent::Swipe { x1, y1, x2, y2, steps } => ControlEvent::Swipe { x1: *x1, y1: *y1, x2: *x2, y2: *y2, steps: *steps },
+            GroupControlEvent::KeyPress { keycode } => ControlEvent::KeyPress { keycode: *keycode },
+            GroupControlEvent::Text { text } => ControlEvent::Text { text: text.clone() },
+            GroupControlEvent::Scroll { x, y, scroll_x, scroll_y } => ControlEvent::Scroll { x: *x, y: *y, scroll_x: *scroll_x, scroll_y: *scroll_y },
+            GroupControlEvent::SetClipboard { text, paste } => ControlEvent::SetClipboard { text: text.clone(), paste: *paste },
+            GroupControlEvent::Back => ControlEvent::Back,
+            GroupControlEvent::Home => ControlEvent::Home,
+            GroupControlEvent::Recents => ControlEvent::Recents,
+            GroupControlEvent::RotateDevice => ControlEvent::RotateDevice,
+            GroupControlEvent::SetScreenPower { mode } => ControlEvent::SetScreenPower { mode: *mode },
+        }
+    }
+}
+
+async fn group_control(
+    State(state): State<Arc<AppState>>,
+    Json(req): Json<GroupControlRequest>,
+) -> impl IntoResponse {
+    let event: ControlEvent = (&req.event).into();
+
+    // Run fan-out in blocking context (uses scoped threads internally)
+    let serials = req.serials.clone();
+    let results = tokio::task::spawn_blocking({
+        // We need to pass the manager reference safely.
+        // Since ScrcpyManager is behind Arc<AppState>, clone the Arc.
+        let state = state.clone();
+        move || GroupController::dispatch(&state.scrcpy, &serials, &event)
+    })
+    .await
+    .unwrap_or_default();
+
+    let result_map: HashMap<String, String> = results
+        .into_iter()
+        .map(|(serial, r)| {
+            (
+                serial,
+                match r {
+                    Ok(()) => "ok".to_string(),
+                    Err(e) => e,
+                },
+            )
+        })
+        .collect();
+
+    Json(serde_json::json!({
+        "dispatched": req.serials.len(),
+        "results": result_map,
+    }))
 }
