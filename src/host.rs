@@ -406,14 +406,6 @@ B: ABS=6e18000 0 0 0 0 0
 INPUTEOF
 mount -o bind /data/fake_input_devices /proc/bus/input/devices 2>/dev/null
 
-# === Fake getenforce (Enforcing) ===
-GPATH=$(which getenforce 2>/dev/null)
-if [ -n "$GPATH" ]; then
-    printf "#!/system/bin/sh\necho Enforcing\n" > /data/fake_getenforce
-    chmod 755 /data/fake_getenforce
-    mount -o bind /data/fake_getenforce $GPATH 2>/dev/null
-fi
-
 # === Battery Simulation ===
 LEVEL=$((60 + RANDOM % 35))
 dumpsys battery set level $LEVEL 2>/dev/null
@@ -426,7 +418,8 @@ echo PROVISION_OK
     ssh_exec(config, &script)
 }
 
-/// Wait for container boot, then inject anti-detection props.
+/// Wait for container boot, then run full provision script.
+/// Uses /root/provision_full.sh which reads /data/device_profile.json.
 pub fn wait_and_provision(
     config: &HostConfig,
     name: &str,
@@ -436,7 +429,7 @@ pub fn wait_and_provision(
         r#"for i in $(seq 1 {timeout}); do
     BOOT=$(docker exec {name} getprop sys.boot_completed 2>/dev/null)
     [ "$BOOT" = "1" ] && break
-    sleep 1
+    sleep 2
 done
 docker exec {name} getprop sys.boot_completed"#,
         timeout = timeout_secs,
@@ -446,11 +439,78 @@ docker exec {name} getprop sys.boot_completed"#,
     let boot_status = ssh_exec(config, &wait_cmd)?;
     if boot_status.trim() != "1" {
         return Err(format!(
-            "Container {name} did not boot within {timeout_secs}s"
+            "容器 {name} 在 {timeout_secs}s 内未启动完成"
         ));
     }
 
-    inject_anti_detection_props(config, name)
+    // Run the full provision script (reads /data/device_profile.json)
+    let provision_cmd = format!(
+        "docker exec {name} sh /data/provision_full.sh 2>&1",
+        name = name
+    );
+    ssh_exec(config, &provision_cmd)
+}
+
+/// Generate a device profile JSON and write it to the container's data volume.
+pub fn write_device_profile(
+    config: &HostConfig,
+    name: &str,
+    num: u32,
+) -> Result<(), String> {
+    // Use the profile pool generator if available, otherwise use defaults
+    let cmd = format!(
+        r#"if [ -f /root/profile_pool/generator.py ]; then
+    python3 /root/profile_pool/generator.py 1 2>/dev/null
+    LATEST=$(ls -t /root/profile_pool/available/*.json 2>/dev/null | head -1)
+    if [ -n "$LATEST" ]; then
+        cp "$LATEST" /root/redroid-data-{num}/device_profile.json
+        mv "$LATEST" /root/profile_pool/active/{name}.json
+        echo "PROFILE_OK"
+        exit 0
+    fi
+fi
+# Fallback: generate inline
+cat > /root/redroid-data-{num}/device_profile.json << 'JEOF'
+{{
+  "brand": "Xiaomi",
+  "model": "M2001J2C",
+  "device": "umi",
+  "fingerprint": "Xiaomi/umi/umi:13/TKQ1.221114.001/V14.0.4.0.TJBCNXM:user/release-keys",
+  "imei1": "86156404{imei_rand}",
+  "imei2": "86156404{imei_rand2}",
+  "serial": "{serial}",
+  "phone": "138{phone_rand}",
+  "operator": "中国移动",
+  "android_id": "{android_id}",
+  "wifi_mac": "44:6d:{mac_rand}",
+  "bt_mac": "44:6d:{bt_rand}",
+  "city": "北京",
+  "battery_capacity": 4780,
+  "first_boot_days_ago": {days_ago},
+  "contacts_count": {contacts},
+  "sms_count": {sms}
+}}
+JEOF
+echo "PROFILE_OK""#,
+        num = num,
+        name = name,
+        imei_rand = format!("{:06}", rand::random::<u32>() % 1000000),
+        imei_rand2 = format!("{:06}", rand::random::<u32>() % 1000000),
+        serial = format!("{:016X}", rand::random::<u64>()),
+        phone_rand = format!("{:08}", rand::random::<u32>() % 100000000),
+        android_id = format!("{:016x}", rand::random::<u64>()),
+        mac_rand = format!("{:02x}:{:02x}:{:02x}:{:02x}",
+            rand::random::<u8>(), rand::random::<u8>(),
+            rand::random::<u8>(), rand::random::<u8>()),
+        bt_rand = format!("{:02x}:{:02x}:{:02x}:{:02x}",
+            rand::random::<u8>(), rand::random::<u8>(),
+            rand::random::<u8>(), rand::random::<u8>()),
+        days_ago = 30 + rand::random::<u32>() % 335,
+        contacts = 20 + rand::random::<u32>() % 180,
+        sms = 50 + rand::random::<u32>() % 450,
+    );
+    ssh_exec(config, &cmd)?;
+    Ok(())
 }
 
 /// One-click new device: destroy old, create fresh with new identity.
@@ -461,23 +521,29 @@ pub fn rotate_vm(config: &HostConfig, name: &str) -> Result<String, String> {
     let num: u32 = num_str.parse().unwrap_or(1);
     let port = config.adb_port_start + (num as u16) - 1;
 
+    // Generate new profile for rotated device
+    let _ = write_device_profile(config, name, num);
+
+    // Deploy provision script
+    let deploy_cmd = format!(
+        "cp /root/provision_full.sh /root/redroid-data-{num}/provision_full.sh",
+        num = num
+    );
+    let _ = ssh_exec(config, &deploy_cmd);
+
     let cmd = format!(
         "docker run -d --name {name} --privileged \
          -p {port}:5555 \
          -v /root/redroid-data-{num}:/data \
-         --memory=8g \
+         -v /root/shared-apks:/data/shared-apks:ro \
+         --memory=8g --cpus=4 \
          {image} \
          androidboot.redroid_gpu_mode=mali \
          androidboot.redroid_gpu_node=/dev/mali0 \
-         androidboot.redroid_fps=30 \
+         androidboot.redroid_fps=60 \
          androidboot.redroid_magisk=1 \
-         ro.product.brand=Xiaomi \
-         ro.product.model=M2001J2C \
-         ro.product.device=umi \
-         ro.product.manufacturer=Xiaomi \
-         ro.build.tags=release-keys \
-         ro.build.type=user \
-         ro.debuggable=0",
+         androidboot.redroid_width=1080 \
+         androidboot.redroid_height=2340",
         name = name,
         port = port,
         num = num,
@@ -526,23 +592,30 @@ pub fn create_vms_v2(config: &HostConfig, count: usize) -> Result<Vec<String>, S
         used_ports.push(port);
 
         let container_name = format!("redroid-{num}");
+
+        // Generate unique device profile
+        let _ = write_device_profile(config, &container_name, num);
+
+        // Deploy provision script to data volume
+        let deploy_cmd = format!(
+            "cp /root/provision_full.sh /root/redroid-data-{num}/provision_full.sh 2>/dev/null",
+            num = num
+        );
+        let _ = ssh_exec(config, &deploy_cmd);
+
         let cmd = format!(
             "docker run -d --name {name} --privileged \
              -p {port}:5555 \
              -v /root/redroid-data-{num}:/data \
-             --memory=8g \
+             -v /root/shared-apks:/data/shared-apks:ro \
+             --memory=8g --cpus=4 \
              {image} \
              androidboot.redroid_gpu_mode=mali \
              androidboot.redroid_gpu_node=/dev/mali0 \
-             androidboot.redroid_fps=30 \
+             androidboot.redroid_fps=60 \
              androidboot.redroid_magisk=1 \
-             ro.product.brand=Xiaomi \
-             ro.product.model=M2001J2C \
-             ro.product.device=umi \
-             ro.product.manufacturer=Xiaomi \
-             ro.build.tags=release-keys \
-             ro.build.type=user \
-             ro.debuggable=0",
+             androidboot.redroid_width=1080 \
+             androidboot.redroid_height=2340",
             name = container_name,
             port = port,
             num = num,
