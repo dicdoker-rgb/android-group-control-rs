@@ -16,6 +16,7 @@ pub struct DeviceConnection {
     pub host_id: String,
     pub connected: bool,
     pub last_seen: Instant,
+    pub provisioned: bool,
 }
 
 /// Background service that periodically discovers running Redroid containers
@@ -59,6 +60,7 @@ impl AutoConnector {
                         serial,
                         host_id: host.to_string(),
                         connected: true,
+                        provisioned: false,
                         last_seen: Instant::now(),
                     },
                 );
@@ -122,13 +124,20 @@ impl AutoConnector {
 
                 match current_adb.get(&serial).map(|s| s.as_str()) {
                     Some("device") => {
-                        // Already connected and healthy — nothing to do.
+                        // Connected and healthy — check if provisioned
+                        let was_provisioned = self.is_provisioned(&serial);
+                        if !was_provisioned {
+                            // Try to provision (inject anti-detection props)
+                            eprintln!("[auto_connector] provisioning {}", serial);
+                            Self::provision_device(&serial);
+                        }
                         updated.insert(
                             serial.clone(),
                             DeviceConnection {
                                 serial,
                                 host_id: h.id.clone(),
                                 connected: true,
+                                provisioned: was_provisioned || true,
                                 last_seen: Instant::now(),
                             },
                         );
@@ -148,6 +157,7 @@ impl AutoConnector {
                                 serial,
                                 host_id: h.id.clone(),
                                 connected: ok,
+                                provisioned: false,
                                 last_seen: Instant::now(),
                             },
                         );
@@ -170,6 +180,7 @@ impl AutoConnector {
                                 serial,
                                 host_id: h.id.clone(),
                                 connected: ok,
+                                provisioned: false,
                                 last_seen: Instant::now(),
                             },
                         );
@@ -230,6 +241,54 @@ impl AutoConnector {
             return Err(format!("adb connect failed: {} {}", stdout, stderr));
         }
         Ok(stdout)
+    }
+
+    /// Check if a device has been provisioned (anti-detection props injected).
+    fn is_provisioned(&self, serial: &str) -> bool {
+        let map = self.known.read().unwrap_or_else(|e| e.into_inner());
+        map.get(serial).map(|d| d.provisioned).unwrap_or(false)
+    }
+
+    /// Inject anti-detection properties into a device via ADB.
+    fn provision_device(serial: &str) {
+        let script = r#"
+/sbin/resetprop ro.board.platform kona 2>/dev/null;
+/sbin/resetprop ro.boot.hardware qcom 2>/dev/null;
+/sbin/resetprop ro.hardware.chipname kona 2>/dev/null;
+/sbin/resetprop ro.debuggable 0 2>/dev/null;
+/sbin/resetprop ro.secure 1 2>/dev/null;
+/sbin/resetprop ro.build.type user 2>/dev/null;
+/sbin/resetprop ro.build.fingerprint 'Xiaomi/umi/umi:13/TKQ1.221114.001/V14.0.4.0.TJBCNXM:user/release-keys' 2>/dev/null;
+/sbin/resetprop ro.vendor.build.fingerprint 'Xiaomi/umi/umi:13/TKQ1.221114.001/V14.0.4.0.TJBCNXM:user/release-keys' 2>/dev/null;
+/sbin/resetprop --delete ro.lineage.device 2>/dev/null;
+/sbin/resetprop --delete ro.lineage.version 2>/dev/null;
+rm -f /.dockerenv;
+setprop gsm.network.type NR;
+setprop gsm.sim.state READY,READY;
+setprop gsm.sim.operator.alpha '中国移动';
+setprop gsm.operator.alpha '中国移动';
+setprop persist.radio.multisim.config dsds;
+setprop gsm.version.baseband '4.0.2.c8-00039';
+setprop net.dns1 223.5.5.5;
+setprop net.dns2 223.6.6.6;
+echo PROVISION_OK
+"#;
+        match Command::new("adb")
+            .args(["-s", serial, "shell", script])
+            .output()
+        {
+            Ok(out) => {
+                let stdout = String::from_utf8_lossy(&out.stdout);
+                if stdout.contains("PROVISION_OK") {
+                    eprintln!("[auto_connector] provisioned {} successfully", serial);
+                } else {
+                    eprintln!("[auto_connector] provision {} partial: {}", serial, stdout.trim());
+                }
+            }
+            Err(e) => {
+                eprintln!("[auto_connector] provision {} failed: {}", serial, e);
+            }
+        }
     }
 
     fn run_adb_disconnect(serial: &str) -> Result<String, String> {
