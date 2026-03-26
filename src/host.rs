@@ -380,6 +380,32 @@ setprop gsm.version.baseband "4.0.2.c8-00039-0710_0125_f484f49"
 setprop net.dns1 223.5.5.5
 setprop net.dns2 223.6.6.6
 
+# === Fake Input Devices (hide rockchip) ===
+cat > /data/fake_input_devices << INPUTEOF
+I: Bus=0019 Vendor=0000 Product=0000 Version=0000
+N: Name="qpnp_pon"
+P: Phys=qpnp_pon/input0
+S: Sysfs=/devices/platform/soc/c440000.qcom,spmi/spmi-0/input/input0
+U: Uniq=
+H: Handlers=event0 cpufreq
+B: PROP=0
+B: EV=3
+B: KEY=10000000000000 0
+
+I: Bus=0018 Vendor=0000 Product=0000 Version=0000
+N: Name="fts_ts"
+P: Phys=
+S: Sysfs=/devices/platform/soc/888000.i2c/i2c-1/1-0038/input/input1
+U: Uniq=
+H: Handlers=event1
+B: PROP=2
+B: EV=b
+B: KEY=400 0 0 0 0 0
+B: ABS=6e18000 0 0 0 0 0
+
+INPUTEOF
+mount -o bind /data/fake_input_devices /proc/bus/input/devices 2>/dev/null
+
 # === Battery Simulation ===
 LEVEL=$((60 + RANDOM % 35))
 dumpsys battery set level $LEVEL 2>/dev/null
