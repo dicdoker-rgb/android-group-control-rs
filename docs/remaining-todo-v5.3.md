@@ -231,6 +231,68 @@
 
 ---
 
+## 十四、补充检测项（文档60项之外）
+
+### 硬件缺失模拟
+
+| # | 检测项 | 真机 | 容器 | 方案 | 优先级 |
+|---|--------|------|------|------|--------|
+| 61 | 麦克风 | 有 | 无 | Hook `AudioManager.getDevices()` / `MediaRecorder` 返回伪设备 | P1 |
+| 62 | 扬声器/听筒 | 有 | 无 | Hook `AudioManager.getDevices(GET_DEVICES_OUTPUTS)` | P1 |
+| 63 | 振动马达 | `hasVibrator()=true` | false | Hook `Vibrator.hasVibrator()` → true | P2 |
+| 64 | NFC | `NfcAdapter`非null | null | Hook `NfcAdapter.getDefaultAdapter()` 返回stub | P2 |
+| 65 | 指纹识别器 | 有 | 无 | Hook `FingerprintManager.isHardwareDetected()` → true | P2 |
+| 66 | 蓝牙扫描结果 | 周围设备 | 空 | Hook `BluetoothAdapter.startDiscovery()` + 伪造扫描结果 | P2 |
+| 67 | USB设备列表 | 正常 | 可能异常 | Hook `UsbManager.getDeviceList()` | P3 |
+
+### 行为/时序模拟
+
+| # | 检测项 | 真机 | 容器 | 方案 | 优先级 |
+|---|--------|------|------|------|--------|
+| 68 | 电池温度曲线 | 25-40°C随充放电变化 | 固定值 | provision定时修改`dumpsys battery set temp`模拟温度变化 | P2 |
+| 69 | uptime模式 | 每天休眠/重启 | 可能连续运行数天 | provision定期调用`dumpsys battery set status`模拟充电/断电周期 | P3 |
+| 70 | 触摸屏特征 | 10点多点触控,120Hz采样 | 无真实触摸硬件 | Hook `InputDevice.getMotionRange()` 返回正常参数 | P2 |
+| 71 | 应用使用统计 | 有几个月使用记录 | 空白 | provision生成`/data/system/usagestats/`伪造使用数据 | P1 |
+| 72 | 通知记录 | 有历史通知 | 空 | provision写入伪造通知记录 | P3 |
+
+### 网络/安全深度检测
+
+| # | 检测项 | 真机 | 容器 | 方案 | 优先级 |
+|---|--------|------|------|------|--------|
+| 73 | TLS指纹(JA3) | 标准Android TLS栈 | Docker可能不同 | 通常共享宿主机内核TLS,问题不大 | P3 |
+| 74 | TCP/IP栈指纹 | Android特征 | Docker可能不同 | 共享宿主机内核,应该一致 | P3 |
+| 75 | /proc/net/tcp | 正常连接 | Docker bridge端口 | Hook文件读取或kretprobe过滤 | P2 |
+| 76 | IP vs GPS位置一致 | 一致 | IP在机房,GPS随机 | 代理IP选同城市+GPS匹配 | P1 |
+
+### 系统/框架深度检测
+
+| # | 检测项 | 真机 | 容器 | 方案 | 优先级 |
+|---|--------|------|------|------|--------|
+| 77 | WebView User-Agent | 含正确build信息 | 可能含redroid | Hook `WebSettings.setUserAgentString()` 或修改WebView配置 | P1 |
+| 78 | 安装来源 | com.android.vending | sideload(null) | Hook `PackageManager.getInstallerPackageName()` → "com.android.vending" | P1 |
+| 79 | 系统字体列表 | 含小米定制字体 | AOSP默认 | 预置MiSans字体到/system/fonts/ (ROM已编) | P3 |
+| 80 | /proc/config.gz | 可能含Docker CONFIG | 正常内核配置 | 宿主机编内核时已处理(CONFIG_LOCALVERSION改了) 但需检查CONFIG_CGROUP等 | P2 |
+| 81 | 账号列表 | 有Google/小米账号 | 空 | provision添加伪造账号或提示用户登录 | P2 |
+| 82 | KeyStore硬件证明 | TEE支持 | 无TEE | PlayIntegrityFix模块 + 软件级attestation | P1 |
+| 83 | 广告ID(GAID) | 有效UUID | 可能为空 | HideMyAndroid可伪造 / provision设置 | P1 |
+| 84 | 进程列表 | 正常Android进程 | 可能有Docker特有进程 | Hook `ActivityManager.getRunningAppProcesses()` 过滤 | P2 |
+| 85 | /proc/filesystems | 含overlay | 不应含overlay | kretprobe过滤或bind mount | P2 |
+
+---
+
+## 总计：85项检测点
+
+| 分类 | 数量 |
+|------|------|
+| ROM编译已解决 | 24项 |
+| 宿主机内核模块已解决 | 10项 |
+| 待Magisk模块解决 | ~5项 |
+| 待Xposed模块解决 | ~25项 |
+| 待provision脚本解决 | ~10项 |
+| 待评估/低优先级 | ~11项 |
+
+---
+
 ## 参考链接
 
 - [CPosed (检测绕过增强LSPosed)](https://github.com/ichason/CPosed)
