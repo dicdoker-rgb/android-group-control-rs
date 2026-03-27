@@ -1,110 +1,140 @@
-# 当前状态检查报告 — redroid-custom:v5.3
+# v5.3 ROM 真实状态 & 待办清单
 
+> 基于 redroid-custom:v5.3 容器 redroid-v4 实际扫描
 > 检查时间: 2026-03-27
-> 容器: redroid-v4, 镜像: redroid-custom:v5.3
 
 ---
 
-## 已完成 ✅
+## 一、已在ROM编译时解决的 ✅
 
-| # | 检测项 | 实际值 | 说明 |
-|---|--------|--------|------|
-| 1 | ro.product.brand | Xiaomi | 编译级写死 |
-| 2 | ro.build.fingerprint | Xiaomi/umi/umi:13/... | Momo能读到正确值 |
-| 3 | ro.build.tags | release-keys | 编译级 |
-| 4 | ro.build.host | build.xiaomi.com | 编译级 |
-| 5 | ro.build.date | Sat Sep 15 10:22:18 CST 2023 | 日期伪造成功 |
-| 6 | GL_RENDERER | **Adreno650** | ✅ libgl_spoof生效了！ |
-| 7 | SELinux getenforce | **Enforcing** | ✅ 之前一直是Disabled |
-| 8 | /proc/mounts overlay | 0 | kretprobe过滤 |
-| 9 | /.dockerenv | 0字节 | 已清理 |
-| 10 | /proc/1/cgroup | 0::/init.scope | 已伪造 |
-| 11 | uname -r | 5.10.160-qcom-SDM710+ | 自定义内核 |
-| 12 | /proc/cpuinfo | Qualcomm SDM710 | bind mount |
-| 13 | /proc/bus/input/devices | 0个rockchip | 已伪装 |
-| 14 | 热区 | tsens_tz_sensor0 | 已伪装 |
-| 15 | /proc/self/maps mali | 0 | kretprobe替换kgsl |
-| 16 | vendor rc文件 | 无redroid开头的rc | 已清洗 |
-| 17 | wlan0 | 存在 | dummy接口 |
-| 18 | libgl_spoof.so | /system/lib64/ 存在 | 编进了ROM |
-| 19 | Zygisk | config=ZYGISK=true | 已配置 |
-| 20 | 预装APP | 9个 | 包含抖音等 |
+| 项目 | 值 | 说明 |
+|------|------|------|
+| ro.product.brand (全7个分区) | Xiaomi | ✅ 编译级 |
+| ro.product.manufacturer (全7个分区) | Xiaomi | ✅ 编译级 |
+| ro.build.fingerprint | Xiaomi/umi/umi:13/TKQ1.221114.001/V14.0.4.0.TJBCNXM:user/release-keys | ✅ 编译级 |
+| ro.bootimage.build.fingerprint | 同上 | ✅ |
+| ro.product.build.fingerprint | 同上 | ✅ |
+| ro.system.build.fingerprint | 同上 | ✅ |
+| ro.vendor.build.fingerprint | 同上 | ✅ |
+| ro.build.tags | release-keys | ✅ |
+| ro.build.description | umi-user 13 TKQ1.221114.001 V14.0.4.0.TJBCNXM release-keys | ✅ |
+| ro.build.product | umi | ✅ |
+| ro.build.flavor | umi-user | ✅ |
+| ro.build.display.id | V14.0.4.0.TJBCNXM | ✅ |
+| ro.build.host | build.xiaomi.com | ✅ |
+| ro.build.date | Sat Sep 15 10:22:18 CST 2023 | ✅ 日期伪造 |
+| ro.hardware | qcom | ✅ |
+| ro.hardware.chipname | sm8250 | ✅ |
+| SELinux getenforce | Enforcing | ✅ 之前一直Disabled |
+| libgl_spoof.so | /system/lib64/ 存在 | ✅ 编进了ROM |
+| provision.sh | /system/bin/ 存在 | ✅ 内置 |
+| vendor rc清洗 | 无redroid开头的rc文件 | ✅ |
+| persist.sys.locale | zh-CN | ✅ |
+| Magisk | /sbin/magisk 存在 | ✅ |
+| Zygisk | config=ZYGISK=true | ✅ |
+| 预装APP | 10个(抖音/支付宝/华为市场/网易云/Momo/Ruru/Applist/HideMyApplist/Magisk/设备检测) | ✅ |
+
+## 二、宿主机内核模块已解决的 ✅
+
+| 项目 | 值 | 说明 |
+|------|------|------|
+| /proc/mounts overlay | 0 | kretprobe mounts_filter_v4 |
+| /proc/self/maps mali | 0 | kretprobe maps_filter |
+| uname -r | 5.10.160-qcom-SDM710+ | 自定义内核 |
+| /proc/cpuinfo | Qualcomm SDM710 | bind mount |
+| /proc/bus/input/devices | 0个rockchip | bind mount |
+| 热区名称 | tsens_tz_sensor0 | bind mount |
+| /.dockerenv | 0字节 | provision |
+| /proc/1/cgroup | 0::/init.scope | provision |
+| wlan0接口 | 存在 | dummy接口 |
+| provision自动执行 | ready | ✅ |
 
 ---
 
-## 未完成 ❌ — 需要继续修复
+## 三、未完成 — 按优先级排序
 
-### P0 必须修（直接影响检测结果）
-
-| # | 问题 | 当前值 | 目标值 | 修复方案 |
-|---|------|--------|--------|---------|
-| 1 | **redroid属性残留34个** | ro.build.description=redroid_arm64-user..., ro.build.product=redroid_arm64, ro.hardware.composer=redroid, 多个分区fingerprint含redroid | 全部Xiaomi/umi | 方案A: provision resetprop清理 / 方案B: 重编ROM overlay修改build.prop |
-| 2 | **Magisk/Shamiko缺失** | /sbin/magisk不存在 | Magisk+Shamiko隐藏root | v5.3没有Magisk了？需要重新安装或用带Magisk的镜像 |
-| 3 | **LD_PRELOAD未设置** | init.environ.rc无PRELOAD行 | export LD_PRELOAD /system/lib64/libgl_spoof.so | 需要在Docker overlay层修改init.environ.rc或编进ROM |
-| 4 | **Widevine DRM缺失** | 只有clearkey | Widevine L3 | 从Pixel镜像提取libwvhidl.so+libwvdrmengine.so |
-| 5 | **传感器为空** | No Sensors on device | 7+个虚拟传感器 | 编译virtual sensor HAL或Xposed模块 |
-| 6 | **Lineage痕迹** | ro.lineage.device=redroid_arm64, ro.lineage.version=20.0-UNOFFICIAL-redroid, ro.modversion | 删除 | resetprop --delete |
-
-### P1 应该修（降低风控评分）
+### P0 致命（Momo/Ruru/抖音会直接检测到）
 
 | # | 问题 | 当前值 | 目标值 | 修复方案 |
 |---|------|--------|--------|---------|
-| 7 | **默认语言英文** | persist.sys.locale空, ro.product.locale=en-US | zh-CN | resetprop或重编ROM |
-| 8 | **eth0仍存在** | eth0@if96可见 | 只有wlan0 | macvlan网络或rename（需不断网方案） |
-| 9 | **编译级fingerprint不一致** | ro.build.fingerprint=Xiaomi/umi 但 ro.odm/system_ext/vendor等=redroid | 全分区统一 | 重编ROM修改所有分区build.prop |
-| 10 | **ro.boot.redroid_*参数** | redroid_fps/gpu_mode/gpu_node/magisk=4个 | 删除或改名 | resetprop --delete或Docker启动参数改名 |
-| 11 | **Canvas指纹** | libgl_spoof有glReadPixels hook但LD_PRELOAD没生效 | 每次不同hash | 修复LD_PRELOAD |
-| 12 | **ro.build.description** | redroid_arm64-user 13...eng.flysky...dev-keys | umi-user 13...V14.0.4.0.TJBCNXM release-keys | resetprop或重编 |
-| 13 | **ro.product.manufacturer部分分区** | odm/system_ext/vendor_dlkm = redroid | Xiaomi | resetprop或重编 |
+| 1 | **GL字符串仍是Mali** | `GLES: ARM, Mali-G610, OpenGL ES 3.2 v1.g18p0` | `Qualcomm, Adreno (TM) 650, OpenGL ES 3.2 V@0502.0` | libgl_spoof.so已在/system但**init.environ.rc没有LD_PRELOAD**，需要加`export LD_PRELOAD /system/lib64/libgl_spoof.so` |
+| 2 | **3个分区fingerprint仍是redroid** | ro.odm.build.fingerprint, ro.system_ext.build.fingerprint, ro.vendor_dlkm.build.fingerprint = `redroid/redroid_arm64...dev-keys` | Xiaomi/umi...release-keys | 方案A: provision用resetprop覆盖 / 方案B: 重编ROM改这3个分区的build.prop |
+| 3 | **ro.hardware.composer=redroid** | redroid | drm 或删除 | resetprop或重编 |
+| 4 | **Shamiko未安装** | Magisk有但无Shamiko模块 | Shamiko隐藏root文件 | 下载Shamiko zip → magisk --install-module |
+| 5 | **vendor HAL文件名含redroid** | /vendor/lib64/hw/gralloc.redroid.so, hwcomposer.redroid.so | 改名或删除 | 重编ROM或Docker overlay层替换 |
+| 6 | **ro.hardware.egl=mali** | mali | adreno (属性层) | resetprop（实际加载仍走mali驱动） |
 
-### P2 可以后做
+### P1 高风险（Badger SDK后台打分）
+
+| # | 问题 | 当前值 | 目标值 | 修复方案 |
+|---|------|--------|--------|---------|
+| 7 | **Widevine DRM缺失** | 只有clearkey | Widevine L3 | 从Pixel镜像提取libwvhidl.so+libwvdrmengine.so |
+| 8 | **传感器为空** | No Sensors on device | 7+个虚拟传感器 | 虚拟sensor HAL或Xposed模块 |
+| 9 | **Docker启动参数暴露** | androidboot.redroid_gpu_mode=mali, redroid_gpu_node, redroid_fps, redroid_magisk | 删除或改名 | 修改Docker run命令参数名/provision中resetprop --delete |
+| 10 | **ro.product.locale=en-US** | en-US | zh-CN | 重编ROM或overlay修改 |
+| 11 | **Lineage痕迹** | ro.lineage.device=redroid_arm64, ro.lineage.version, ro.modversion | 删除 | resetprop --delete |
+| 12 | **eth0仍存在** | eth0@if96与wlan0共存 | 只有wlan0 | macvlan网络 |
+| 13 | **Canvas指纹未生效** | glReadPixels hook在libgl_spoof里但LD_PRELOAD没设 | 每次不同hash | 修复P0#1后自动生效 |
+| 14 | **fps=30** | androidboot.redroid_fps=30 | 60 | Docker启动参数改 |
+
+### P2 优化项
 
 | # | 问题 | 说明 |
 |---|------|------|
-| 14 | 摄像头数量=0 | v4l2loopback模块已编译，Camera HAL适配待做 |
-| 15 | Play Integrity | 需要PlayIntegrityFix Magisk模块 |
-| 16 | 壁纸 | 系统默认壁纸 |
-| 17 | 代理IP池 | 每容器独立出口IP |
+| 15 | 摄像头 | /dev/video10,11存在但Android Camera HAL不识别 |
+| 16 | Play Integrity | 需PlayIntegrityFix模块 |
+| 17 | 壁纸 | 系统默认 |
+| 18 | 代理IP | 每容器独立出口IP |
+| 19 | 生活痕迹 | 通讯录/短信/安装时间（provision里有但需确认是否执行） |
 
 ---
 
-## 关键发现
+## 四、关键依赖关系
 
-### 好消息
-1. **GL字符串终于改了！** `GLES: ARM, Adreno650` — libgl_spoof编进了ROM并且SurfaceFlinger层面生效了
-2. **SELinux = Enforcing** — 之前一直是Disabled，现在过了
-3. **Fingerprint编译级写死** — Momo能读到Xiaomi/umi
-4. **编译日期2023年** — 不再是2026年
-5. **vendor rc文件已清洗** — 无redroid开头的rc
+```
+P0#1 LD_PRELOAD修复 → P1#13 Canvas自动生效
+P0#4 Shamiko安装 → Momo "环境破坏"消失
+P0#1 + P0#2 + P0#3 → Momo fingerprint检查通过
+P0#6 egl=adreno → 属性层与GL字符串一致
+P1#9 删除redroid启动参数 → 减少属性层暴露面
+```
 
-### 坏消息
-1. **redroid属性残留34个** — 大量分区的build.prop没改（odm/system_ext/vendor_dlkm/product）
-2. **Magisk消失了** — v5.3镜像可能去掉了Magisk，/sbin/magisk不存在
-3. **LD_PRELOAD没在init.environ.rc里** — GL spoof只在SurfaceFlinger进程生效（可能是编译时链接的），APP进程不确定是否生效
-4. **GL字符串显示Adreno650但版本号还是Mali的** — `v1.g18p0-01eac0` 是Mali驱动版本，交叉验证仍有矛盾
+## 五、最快修复路径
 
-### 需要验证的
-1. 抖音Badger SDK在v5.3上的扫描结果
-2. Momo/Ruru在v5.3上的完整检测
-3. GL spoof对APP进程是否生效（不只是SurfaceFlinger）
+**可以通过provision一次性修复的（不需要重编ROM）：**
+```bash
+# P0#2 fingerprint
+resetprop ro.odm.build.fingerprint "Xiaomi/umi/umi:13/..."
+resetprop ro.system_ext.build.fingerprint "Xiaomi/umi/umi:13/..."
+resetprop ro.vendor_dlkm.build.fingerprint "Xiaomi/umi/umi:13/..."
 
----
+# P0#3 composer
+resetprop ro.hardware.composer drm
 
-## 修复优先级建议
+# P0#6 egl
+resetprop ro.hardware.egl adreno
 
-**立即可做（resetprop + provision）：**
-- 清理34个redroid属性
-- 删除lineage痕迹
-- 删除ro.boot.redroid_*
-- 设置中文locale
+# P1#9 删redroid启动参数
+resetprop --delete ro.boot.redroid_fps
+resetprop --delete ro.boot.redroid_gpu_mode
+resetprop --delete ro.boot.redroid_gpu_node
+resetprop --delete ro.boot.redroid_magisk
 
-**需要Docker overlay层修改：**
-- init.environ.rc加LD_PRELOAD
-- 安装Magisk+Shamiko
+# P1#11 删lineage
+resetprop --delete ro.lineage.device
+resetprop --delete ro.lineage.version
+resetprop --delete ro.lineage.display.version
+resetprop --delete ro.modversion
+```
 
-**需要重编ROM：**
-- 所有分区build.prop统一为Xiaomi
-- GL版本号修正
-- 默认locale=zh-CN
-- Widevine L3
-- 虚拟传感器HAL
+**必须修改Docker镜像overlay的：**
+- P0#1: init.environ.rc加LD_PRELOAD（最关键！）
+- P0#5: vendor HAL文件重命名
+
+**必须额外安装的：**
+- P0#4: Shamiko模块（从GitHub下载zip）
+- P1#7: Widevine（从Pixel镜像提取）
+
+**必须重编ROM的：**
+- P1#8: 虚拟传感器HAL
+- P1#10: ro.product.locale编译级
