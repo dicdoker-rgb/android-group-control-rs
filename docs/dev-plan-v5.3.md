@@ -331,3 +331,34 @@ Momo的"检测到破坏行为(MagiskHide)"是检测Magisk对系统的修改痕�
 2. **修复Magisk集成** — 在ROM编译时正确设置Magisk的init脚本让module mount工作
 3. **自定义Zygisk注入** — 不走Magisk module系统，直接从宿主机注入zygisk so到zygote
 4. **完全不用Magisk** — 群控场景其实不需要root（resetprop通过Docker启动参数也能实现），去掉Magisk反而更干净
+
+---
+
+## 最新发现：v5.4-nomagisk
+
+### 创建了无Magisk镜像
+从v5.3导出→删除所有Magisk文件→重新打包为 `redroid-custom:v5.4-nomagisk`
+
+### Momo仍然报"环境损坏"的原因（按严重度排列）
+
+1. **`/sys/fs/selinux` 不存在** — 真机一定有SELinuxFS。getenforce说Enforcing但没有实际的selinux文件系统。Momo检测到就知道是假的。
+   - 解决方案：需要内核启用SELinux并在容器内可见selinuxfs
+
+2. **Fingerprint含 `eng.flysky`** — Docker启动参数或ROM的默认fingerprint仍包含编译者信息
+   - 解决方案：Docker启动参数传正确的fingerprint覆盖
+
+3. **build.prop残留** — /system/build.prop已修改但其他分区可能仍有redroid/dev-keys
+   - 解决方案：overlay层修改所有分区build.prop（已做）
+
+4. **`ro.boot.verifiedbootstate` 和 `ro.boot.vbmeta.device_state` 为空** — 真机一定有值
+   - 解决方案：Docker启动参数传入
+
+### 已执行的修复
+- v5.4-nomagisk镜像：删除了/vendor/etc/init/magisk/和init.magisk.rc
+- 所有分区build.prop overlay修改：去掉redroid/dev-keys/flysky/lineage
+- GL spoof wrapper方案验证有效
+
+### 下一步
+1. Docker启动参数加 `androidboot.verifiedbootstate=green androidboot.vbmeta.device_state=locked`
+2. 用正确的fingerprint覆盖：`androidboot.fingerprint=Xiaomi/umi/umi:13/TKQ1.221114.001/V14.0.4.0.TJBCNXM:user/release-keys`
+3. SELinux问题需要宿主机内核支持 — 检查内核是否已启用SELinux
