@@ -199,7 +199,24 @@
 
 ---
 
-## 十二、验证标准
+## 十二、抖音Badger SDK专项（之前扫描遗漏的3项）
+
+| # | Badger检测项 | 问题 | 方案 | 状态 |
+|---|-------------|------|------|------|
+| 58 | **Provider 24 C++层注册失败** | 原因不明，可能是缺少RIL（Radio Interface Layer）服务或TelephonyRegistry | 安装SIM/信号模块(#9-18)后可能自动解决；如果不行需要在ROM中添加虚拟RIL HAL | ⬜ |
+| 59 | **Feature 21 存储/文件系统信息** | Docker overlay2路径可能通过`StatFs`/`StorageManager`等API暴露 | Hook `StatFs` 返回正常ext4信息；Hook `StorageManager.getStorageVolumes()` 过滤异常卷 | ⬜ |
+| 60 | **/sys/devices/platform/ 暴露RK3588** | fb000000.gpu, rknpu, rkvenc, rkvdec等RK3588硬件拓扑，Badger Feature 30会读取 | 方案A: 内核模块hook readdir过滤 / 方案B: Xposed hook `File.list("/sys/devices/platform/")` 过滤rockchip设备名 / 方案C: bind mount假的/sys/devices/platform/ | ⬜ |
+
+> **#60最危险** — `/sys/devices/platform/`下直接暴露了`fb000000.gpu`(Mali)、`rknpu_dev`(NPU)、`rkvenc`(视频编码)、`rkvdec`(视频解码)等RK3588特有设备名。真机小米10应该显示的是高通设备名。
+>
+> 可能的解决方案：
+> 1. provision中用bind mount覆盖/sys/devices/platform/的关键子目录
+> 2. 写新的kretprobe内核模块过滤/sys目录枚举结果
+> 3. Xposed模块hook java.io.File操作
+
+---
+
+## 十三、验证标准
 
 全部完成后，以下检测必须通过：
 
