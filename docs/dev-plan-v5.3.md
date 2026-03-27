@@ -306,3 +306,28 @@ logcat -d | grep -iE "badger|bbox|MediaDrm|HookDetect|nativeGetReport"
 | LSPosed在容器中daemon不启动 | 无法hook APP层API | 尝试CPosed/LSPosed-Irena/降级版本 |
 | iUnlockerGL不兼容Mali驱动 | GL字符串改不了 | 回退到Xposed hook方案 |
 | HideMyAndroid功能不全 | 需要多个模块组合 | Device Emulator + 自研模块补充 |
+
+---
+
+## 阶段一结果：Magisk Module Mount 不可用
+
+### 根因
+Magisk Kitsune在v5.3 Redroid容器中的module mount系统不工作：
+- `/sbin/.magisk` 是symlink到 `/root/.magisk`
+- worker tmpfs可以手动创建但Magisk daemon在init阶段创建失败
+- `--post-fs-data` 触发后依然无法mount modules到system
+- ZygiskNext、LSPosed、Shamiko都安装到了`/data/adb/modules/`但没有被加载
+
+### 已找到的替代方案
+1. **GL spoof**: ✅ 通过app_process64 wrapper解决（不需要Zygisk）
+2. **Root隐藏**: ⚠️ bind mount可隐藏/sbin和/data/adb和magiskd进程名，但Momo仍检测到系统修改行为
+3. **属性伪装**: ✅ resetprop可解决（不需要Xposed）
+
+### 需要的方案
+Momo的"检测到破坏行为(MagiskHide)"是检测Magisk对系统的修改痕迹（sepolicy注入等），只有Shamiko（需要Zygisk注入）能绕过。
+
+可能的解决路径：
+1. **换KernelSU** — 内核级root，不修改系统分区，天然更难检测
+2. **修复Magisk集成** — 在ROM编译时正确设置Magisk的init脚本让module mount工作
+3. **自定义Zygisk注入** — 不走Magisk module系统，直接从宿主机注入zygisk so到zygote
+4. **完全不用Magisk** — 群控场景其实不需要root（resetprop通过Docker启动参数也能实现），去掉Magisk反而更干净
