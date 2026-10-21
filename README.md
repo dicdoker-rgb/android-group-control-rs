@@ -14,6 +14,17 @@ parallel instead of spawning N processes.
 
 ---
 
+## What it looks like
+
+Two containers on the same board, each provisioned as a different handset:
+
+<p>
+  <img src="data/screenshots/192.168.31.9_5553-1774097326.png" width="250" alt="redroid container with an AOSP profile">
+  <img src="data/screenshots/1ca3a42d-1773763484.png" width="250" alt="redroid container with a Xiaomi profile">
+</p>
+
+---
+
 ## What it does
 
 - Runs many `redroid` containers on a single RK3588 host, one adb port each (`5550`–`5599`)

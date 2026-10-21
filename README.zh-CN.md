@@ -12,6 +12,17 @@
 
 ---
 
+## 长什么样
+
+同一块板子上的两个容器，各自被伪装成不同的手机：
+
+<p>
+  <img src="data/screenshots/192.168.31.9_5553-1774097326.png" width="250" alt="AOSP 画像的 redroid 容器">
+  <img src="data/screenshots/1ca3a42d-1773763484.png" width="250" alt="小米画像的 redroid 容器">
+</p>
+
+---
+
 ## 它做什么
 
 - 一块 RK3588 宿主上跑一堆 `redroid` 容器，一台虚拟手机一个 adb 端口（`5550`–`5599`）
