@@ -244,7 +244,7 @@ wget https://dl.google.com/dl/android/aosp/panther-tq3a.230901.001-factory-36159
 ### 步骤6.2：部署到容器
 
 ```bash
-scp libwvhidl.so libwvdrmengine.so root@192.168.31.9:/tmp/
+scp libwvhidl.so libwvdrmengine.so root@<host-ip>:/tmp/
 # 放入容器vendor目录（通过宿主机data卷+bind mount）
 ```
 

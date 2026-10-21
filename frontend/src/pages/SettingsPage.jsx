@@ -39,7 +39,7 @@ export function SettingsPage() {
         <PanelBlock title="添加宿主机">
           <div className="two-cols">
             <input value={form.name} onChange={(e) => setForm(f => ({...f, name: e.target.value}))} placeholder="名称，如 香橙派 #1" />
-            <input value={form.host} onChange={(e) => setForm(f => ({...f, host: e.target.value}))} placeholder="IP 地址，如 192.168.31.9" />
+            <input value={form.host} onChange={(e) => setForm(f => ({...f, host: e.target.value}))} placeholder="IP 地址，如 192.168.1.100" />
           </div>
           <div className="two-cols">
             <input value={form.password} onChange={(e) => setForm(f => ({...f, password: e.target.value}))} placeholder="SSH 密码" type="password" />

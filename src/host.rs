@@ -28,7 +28,9 @@ impl Default for HostConfig {
             host: String::new(),
             ssh_port: 22,
             user: "root".to_string(),
-            password: "orangepi".to_string(),
+            // Never ship a default password. Read it from the environment or
+            // let the user fill it in the settings UI.
+            password: std::env::var("AGC_DEFAULT_SSH_PASSWORD").unwrap_or_default(),
             adb_port_start: 5550,
             adb_port_end: 5599,
             image: "cnflysky/redroid-rk3588:lineage-20".to_string(),
